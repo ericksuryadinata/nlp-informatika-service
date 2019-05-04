@@ -1,28 +1,33 @@
-# Adonis API application
+# NLP INFORMATIKA SERVICE
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+Sekumpulan API Service untuk melakukan NLP Proses, digunakan oleh [BOT](https://web.telegram.org/#/im?p=@UntagSbyBot) Teknik Informatika Universitas 17 Agustus 1945 Surabaya
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+## HOW TO DEVELOP
 
-## Setup
+Requirements :
 
-Use the adonis command to install the blueprint
+1. Node.js >= 8.0.0
+2. npm >= 3.0.0
 
-```bash
-adonis new yardstick --api-only
-```
+Service ini menggunakan
 
-or manually clone the repo and then run `npm install`.
+1. [Adonis](https://adonisjs.com/)
+2. [NLP.JS](https://github.com/axa-group/nlp.js)
 
+Untuk selanjutnya bisa lihat di masing - masing dokumentasi
 
-### Migrations
+## HOW TO DEPLOY
 
-Run the following command to run startup migrations.
+1. Clone repository ini
+2. `cd /path-to-this-cloned-repository`
+3. `npm install`
 
-```js
-adonis migration:run
-```
+untuk melihat hasilnya kalian bisa menggunakan berbagai cara
+
+NODE = `node server.js`
+ADONIS = `adonis serve --dev` __recomended__
+PM2 = `pm2 start server.js`
+
+## DOCUMENTATION
+
+--coming soon--
