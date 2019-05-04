@@ -23,7 +23,7 @@ const apiGroup = (group) => {
 
 apiGroup(
   Route.group(() => {
-    require('./api_nlu')
+    require('./nlu')
   }).namespace('NLU').prefix('nlu').as('nlu')
 )
 
