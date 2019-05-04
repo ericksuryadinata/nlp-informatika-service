@@ -16,6 +16,14 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+const apiGroup = (group) => {
+  group.prefix('api')
+  return group
+}
+
+apiGroup(
+  Route.group(() => {
+    require('./api_nlu')
+  }).namespace('NLU').prefix('nlu').as('nlu')
+)
+
