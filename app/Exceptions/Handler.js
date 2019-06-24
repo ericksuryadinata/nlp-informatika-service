@@ -21,11 +21,7 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
   async handle (error, { request, response }) {
-    let messages = {
-      'status' : error.status,
-      'messages' : error.message
-    }
-    response.status(error.status).json(messages)
+    response.status(error.status).send(error.message)
   }
 
   /**
