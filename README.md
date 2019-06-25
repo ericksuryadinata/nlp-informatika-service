@@ -1,6 +1,6 @@
 # NLP INFORMATIKA SERVICE
 
-Sekumpulan API Service untuk melakukan NLP Proses, digunakan oleh [BOT](https://web.telegram.org/#/im?p=@UntagSbyBot) Teknik Informatika Universitas 17 Agustus 1945 Surabaya
+Sekumpulan API Service untuk melakukan NLP Proses, digunakan oleh [BOT](https://web.telegram.org/#/im?p=@untagsbybot) Teknik Informatika Universitas 17 Agustus 1945 Surabaya
 
 ## HOW TO DEVELOP
 
@@ -30,4 +30,4 @@ PM2 = `pm2 start server.js`
 
 ## DOCUMENTATION
 
---coming soon--
+-- ON DEV --

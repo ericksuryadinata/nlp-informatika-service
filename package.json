@@ -24,11 +24,17 @@
     "@adonisjs/framework": "^5.0.9",
     "@adonisjs/ignitor": "^2.0.8",
     "@adonisjs/lucid": "^6.1.3",
+    "@adonisjs/validator": "^5.0.6",
     "mysql": "^2.17.1",
     "node-nlp": "^3.2.0"
   },
   "devDependencies": {},
   "autoload": {
     "App": "./app"
+  },
+  "standard": {
+    "globals": [
+      "use"
+    ]
   }
 }

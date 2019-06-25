@@ -16,19 +16,19 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-const apiGroup = (group) => {
-  group.prefix('api')
+const apiv1Group = (group) => {
+  group.prefix('api/v1').as('api.v1')
   return group
 }
 
-apiGroup(
+apiv1Group(
   Route.group(() => {
-    require('./nlu')
-  }).namespace('NLU').prefix('nlu').as('nlu'),
-)
-apiGroup(
-  Route.group(() => {
-    require('./ner')
-  }).namespace('NER').prefix('ner').as('ner')
+    require('./training')
+  }).namespace('Training').prefix('train').as('training')
 )
 
+apiv1Group(
+  Route.group(() => {
+    require('./data')
+  }).namespace('Data').prefix('data').as('data')
+)

@@ -4,7 +4,7 @@
 const Model = use('Model')
 
 class Dosen extends Model {
-  static get table(){
+  static get table () {
     return 'dosens'
   }
 }

@@ -1,0 +1,933 @@
+{
+  "settings": {
+    "languages": [
+      "id"
+    ]
+  },
+  "nluManager": {
+    "settings": {},
+    "languages": [
+      "id"
+    ],
+    "intentDomains": {},
+    "domainManagers": {
+      "id": {
+        "settings": {
+          "language": "id",
+          "config": {
+            "activation": "leaky-relu",
+            "hiddenLayers": [],
+            "iterations": 20000,
+            "learningRate": 0.8,
+            "errorThresh": 0.00005,
+            "momentum": 0.5,
+            "deltaErrorThresh": 0.000001,
+            "maxDecimals": 9,
+            "leakyReluAlpha": 0.06,
+            "timeout": 120000
+          }
+        },
+        "language": "id",
+        "nluClassName": "BrainNLU",
+        "useMasterDomain": true,
+        "trainByDomain": true,
+        "keepStopwords": true,
+        "stemDict": {
+          "%kondisisalam%,selamat": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%,met": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%,slmt": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%,hai,,selamat": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%,bos": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%,bot": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisisalam%,halo,": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "hai": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "hi": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "hey": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "halo": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "oy": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "?,apa,hai,,kabar": {
+            "domain": "default",
+            "intent": "sapaan.kabar.tanya"
+          },
+          "?,bagaimana,kabar": {
+            "domain": "default",
+            "intent": "sapaan.kabar.tanya"
+          },
+          "?,gimana,kabar": {
+            "domain": "default",
+            "intent": "sapaan.kabar.tanya"
+          },
+          "?,bagaimana,kondisi": {
+            "domain": "default",
+            "intent": "sapaan.kabar.tanya"
+          }
+        },
+        "intentDict": {
+          "sapaan.kabar": "default",
+          "sapaan.kabar.tanya": "default"
+        },
+        "useStemDict": true,
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "language": "id",
+              "config": {
+                "activation": "leaky-relu",
+                "hiddenLayers": [],
+                "iterations": 20000,
+                "learningRate": 0.8,
+                "errorThresh": 0.00005,
+                "momentum": 0.5,
+                "deltaErrorThresh": 0.000001,
+                "maxDecimals": 9,
+                "leakyReluAlpha": 0.06,
+                "timeout": 120000
+              }
+            },
+            "language": "id",
+            "keepStopwords": true,
+            "docs": [
+              {
+                "intent": "default",
+                "utterance": [
+                  "selamat",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "selamat",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "met",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "met",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "slmt",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "slmt",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "hai,",
+                  "selamat",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "hai,",
+                  "selamat",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisisalam%",
+                  "bos"
+                ],
+                "tokens": [
+                  "%kondisisalam%",
+                  "bos"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisisalam%",
+                  "bot"
+                ],
+                "tokens": [
+                  "%kondisisalam%",
+                  "bot"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "halo,",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "halo,",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "hai"
+                ],
+                "tokens": [
+                  "hai"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "hi"
+                ],
+                "tokens": [
+                  "hi"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "hey"
+                ],
+                "tokens": [
+                  "hey"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "halo"
+                ],
+                "tokens": [
+                  "halo"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "oy"
+                ],
+                "tokens": [
+                  "oy"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "hai,",
+                  "apa",
+                  "kabar",
+                  "?"
+                ],
+                "tokens": [
+                  "hai,",
+                  "apa",
+                  "kabar",
+                  "?"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "bagaimana",
+                  "kabar",
+                  "?"
+                ],
+                "tokens": [
+                  "bagaimana",
+                  "kabar",
+                  "?"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "gimana",
+                  "kabar",
+                  "?"
+                ],
+                "tokens": [
+                  "gimana",
+                  "kabar",
+                  "?"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "bagaimana",
+                  "kondisi",
+                  "?"
+                ],
+                "tokens": [
+                  "bagaimana",
+                  "kondisi",
+                  "?"
+                ]
+              }
+            ],
+            "features": {
+              "selamat": 2,
+              "%kondisisalam%": 8,
+              "met": 1,
+              "slmt": 1,
+              "hai,": 2,
+              "bos": 1,
+              "bot": 1,
+              "halo,": 1,
+              "hai": 1,
+              "hi": 1,
+              "hey": 1,
+              "halo": 1,
+              "oy": 1,
+              "apa": 1,
+              "kabar": 3,
+              "?": 4,
+              "bagaimana": 2,
+              "gimana": 1,
+              "kondisi": 1
+            },
+            "isEditing": false,
+            "className": "BrainNLU",
+            "classifier": {
+              "className": "BrainClassifier",
+              "settings": {
+                "language": "id",
+                "config": {
+                  "activation": "leaky-relu",
+                  "hiddenLayers": [],
+                  "iterations": 20000,
+                  "learningRate": 0.8,
+                  "errorThresh": 0.00005,
+                  "momentum": 0.5,
+                  "deltaErrorThresh": 0.000001,
+                  "maxDecimals": 9,
+                  "leakyReluAlpha": 0.06,
+                  "timeout": 120000
+                }
+              },
+              "labels": [],
+              "network": {
+                "layers": [],
+                "trainOpts": {
+                  "iterations": 20000,
+                  "errorThresh": 0.00005,
+                  "deltaErrorThresh": 0.000001,
+                  "learningRate": 0.8,
+                  "momentum": 0.5,
+                  "leakyReluAlpha": 0.06,
+                  "maxDecimals": 9
+                }
+              }
+            }
+          },
+          "default": {
+            "settings": {
+              "language": "id",
+              "config": {
+                "activation": "leaky-relu",
+                "hiddenLayers": [],
+                "iterations": 20000,
+                "learningRate": 0.8,
+                "errorThresh": 0.00005,
+                "momentum": 0.5,
+                "deltaErrorThresh": 0.000001,
+                "maxDecimals": 9,
+                "leakyReluAlpha": 0.06,
+                "timeout": 120000
+              }
+            },
+            "language": "id",
+            "keepStopwords": true,
+            "docs": [
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "selamat",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "selamat",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "met",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "met",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "slmt",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "slmt",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "hai,",
+                  "selamat",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "hai,",
+                  "selamat",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisisalam%",
+                  "bos"
+                ],
+                "tokens": [
+                  "%kondisisalam%",
+                  "bos"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisisalam%",
+                  "bot"
+                ],
+                "tokens": [
+                  "%kondisisalam%",
+                  "bot"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "halo,",
+                  "%kondisisalam%"
+                ],
+                "tokens": [
+                  "halo,",
+                  "%kondisisalam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "hai"
+                ],
+                "tokens": [
+                  "hai"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "hi"
+                ],
+                "tokens": [
+                  "hi"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "hey"
+                ],
+                "tokens": [
+                  "hey"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "halo"
+                ],
+                "tokens": [
+                  "halo"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "oy"
+                ],
+                "tokens": [
+                  "oy"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar.tanya",
+                "utterance": [
+                  "hai,",
+                  "apa",
+                  "kabar",
+                  "?"
+                ],
+                "tokens": [
+                  "hai,",
+                  "apa",
+                  "kabar",
+                  "?"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar.tanya",
+                "utterance": [
+                  "bagaimana",
+                  "kabar",
+                  "?"
+                ],
+                "tokens": [
+                  "bagaimana",
+                  "kabar",
+                  "?"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar.tanya",
+                "utterance": [
+                  "gimana",
+                  "kabar",
+                  "?"
+                ],
+                "tokens": [
+                  "gimana",
+                  "kabar",
+                  "?"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar.tanya",
+                "utterance": [
+                  "bagaimana",
+                  "kondisi",
+                  "?"
+                ],
+                "tokens": [
+                  "bagaimana",
+                  "kondisi",
+                  "?"
+                ]
+              }
+            ],
+            "features": {
+              "selamat": 2,
+              "%kondisisalam%": 8,
+              "met": 1,
+              "slmt": 1,
+              "hai,": 2,
+              "bos": 1,
+              "bot": 1,
+              "halo,": 1,
+              "hai": 1,
+              "hi": 1,
+              "hey": 1,
+              "halo": 1,
+              "oy": 1,
+              "apa": 1,
+              "kabar": 3,
+              "?": 4,
+              "bagaimana": 2,
+              "gimana": 1,
+              "kondisi": 1
+            },
+            "isEditing": false,
+            "className": "BrainNLU",
+            "classifier": {
+              "className": "BrainClassifier",
+              "settings": {
+                "language": "id",
+                "config": {
+                  "activation": "leaky-relu",
+                  "hiddenLayers": [],
+                  "iterations": 20000,
+                  "learningRate": 0.8,
+                  "errorThresh": 0.00005,
+                  "momentum": 0.5,
+                  "deltaErrorThresh": 0.000001,
+                  "maxDecimals": 9,
+                  "leakyReluAlpha": 0.06,
+                  "timeout": 120000
+                }
+              },
+              "labels": [],
+              "network": {
+                "sizes": [
+                  19,
+                  2
+                ],
+                "layers": [
+                  {
+                    "selamat": {},
+                    "%kondisisalam%": {},
+                    "met": {},
+                    "slmt": {},
+                    "hai,": {},
+                    "bos": {},
+                    "bot": {},
+                    "halo,": {},
+                    "hai": {},
+                    "hi": {},
+                    "hey": {},
+                    "halo": {},
+                    "oy": {},
+                    "apa": {},
+                    "kabar": {},
+                    "?": {},
+                    "bagaimana": {},
+                    "gimana": {},
+                    "kondisi": {}
+                  },
+                  {
+                    "sapaan.kabar": {
+                      "bias": 11.67880249,
+                      "weights": {
+                        "selamat": 0.452214837,
+                        "%kondisisalam%": 4.653398514,
+                        "met": 0.403846413,
+                        "slmt": 0.418403268,
+                        "hai,": -0.134910569,
+                        "bos": 0.38058877,
+                        "bot": 0.376210004,
+                        "halo,": 0.377858877,
+                        "hai": 5.024725914,
+                        "hi": 5.004775047,
+                        "hey": 4.983273506,
+                        "halo": 4.960249901,
+                        "oy": 4.935694695,
+                        "apa": -1.470263958,
+                        "kabar": -3.946101904,
+                        "?": -6.204031467,
+                        "bagaimana": -3.206695795,
+                        "gimana": -1.527071476,
+                        "kondisi": -2.257927895
+                      }
+                    },
+                    "sapaan.kabar.tanya": {
+                      "bias": 0.930104494,
+                      "weights": {
+                        "selamat": -0.630732358,
+                        "%kondisisalam%": -1.775787592,
+                        "met": -0.278460562,
+                        "slmt": -0.249922678,
+                        "hai,": 1.362921596,
+                        "bos": -0.155958891,
+                        "bot": -0.133116364,
+                        "halo,": -0.113984384,
+                        "hai": -0.926965237,
+                        "hi": -0.922533929,
+                        "hey": -0.917817831,
+                        "halo": -0.912820399,
+                        "oy": -0.907537222,
+                        "apa": 1.704510927,
+                        "kabar": 4.382027149,
+                        "?": 8.212966919,
+                        "bagaimana": 3.500839233,
+                        "gimana": 3.007615566,
+                        "kondisi": 3.830938339
+                      }
+                    }
+                  }
+                ],
+                "trainOpts": {
+                  "iterations": 20000,
+                  "errorThresh": 0.00005,
+                  "deltaErrorThresh": 0.000001,
+                  "learningRate": 0.8,
+                  "momentum": 0.5,
+                  "leakyReluAlpha": 0.06,
+                  "maxDecimals": 9
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extraSentences": [
+      [
+        "id",
+        "Selamat %kondisisalam%"
+      ],
+      [
+        "id",
+        "Met %kondisisalam%"
+      ],
+      [
+        "id",
+        "Slmt %kondisisalam%"
+      ],
+      [
+        "id",
+        "Hai, selamat %kondisisalam%"
+      ],
+      [
+        "id",
+        "%kondisisalam%"
+      ],
+      [
+        "id",
+        "%kondisisalam% bos"
+      ],
+      [
+        "id",
+        "%kondisisalam% bot"
+      ],
+      [
+        "id",
+        "Halo, %kondisisalam%"
+      ],
+      [
+        "id",
+        "Hai"
+      ],
+      [
+        "id",
+        "hi"
+      ],
+      [
+        "id",
+        "Hey"
+      ],
+      [
+        "id",
+        "Halo"
+      ],
+      [
+        "id",
+        "Oy"
+      ],
+      [
+        "id",
+        "Hai, Apa Kabar ?"
+      ],
+      [
+        "id",
+        "Bagaimana kabarmu ?"
+      ],
+      [
+        "id",
+        "Gimana kabarmu ?"
+      ],
+      [
+        "id",
+        "Bagaimana kondisimu ?"
+      ]
+    ]
+  },
+  "nerManager": {
+    "settings": {},
+    "threshold": 0.8,
+    "builtins": [
+      "Number",
+      "Ordinal",
+      "Percentage",
+      "Age",
+      "Currency",
+      "Dimension",
+      "Temperature",
+      "DateTime",
+      "PhoneNumber",
+      "IpAddress",
+      "Boolean",
+      "Email",
+      "Hashtag",
+      "URL"
+    ],
+    "namedEntities": {
+      "kondisisalam": {
+        "type": "enum",
+        "name": "kondisisalam",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Pagi": [
+              "pagi",
+              "Pagi"
+            ],
+            "Siang": [
+              "siang",
+              "Siang"
+            ],
+            "Malam": [
+              "malam",
+              "Malam"
+            ]
+          }
+        }
+      },
+      "kondisinetral": {
+        "type": "enum",
+        "name": "kondisinetral",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Alhamdulillah": [
+              "alhamdulillah",
+              "Alhamdulillah"
+            ],
+            "Semangat": [
+              "semangat",
+              "Semangat"
+            ]
+          }
+        }
+      },
+      "kondisibaik": {
+        "type": "enum",
+        "name": "kondisibaik",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Baik": [
+              "baik",
+              "Baik"
+            ]
+          }
+        }
+      },
+      "kondisiburuk": {
+        "type": "enum",
+        "name": "kondisiburuk",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Buruk": [
+              "buruk",
+              "Buruh"
+            ],
+            "Sedih": [
+              "sedih",
+              "Sedih"
+            ],
+            "Gawat": [
+              "Gawat",
+              "gawat"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "slotManager": {
+    "sapaan.kabar": {
+      "kondisisalam": {
+        "intent": "sapaan.kabar",
+        "entity": "kondisisalam",
+        "mandatory": false,
+        "locales": {}
+      }
+    }
+  },
+  "responses": {
+    "id": {
+      "sapaan.kabar.tanya": [
+        {
+          "response": "Baik - Baik"
+        },
+        {
+          "response": "Selalu sehat :)"
+        },
+        {
+          "response": "Selalu Semangat"
+        }
+      ],
+      "sapaan.kabar": [
+        {
+          "response": "Hi Juga"
+        },
+        {
+          "response": "Hey"
+        },
+        {
+          "response": "Aye Aye"
+        },
+        {
+          "response": "{{kondisisalam}}"
+        },
+        {
+          "response": "Selamat {{kondisisalam}} juga"
+        },
+        {
+          "response": "{{kondisisalam}} juga"
+        }
+      ]
+    }
+  },
+  "actions": {}
+}
