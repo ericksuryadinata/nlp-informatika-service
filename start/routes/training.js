@@ -5,4 +5,4 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', 'TrainingController.index').as('index')
+Route.post('/', 'TrainingController.index').as('index')

@@ -33,35 +33,67 @@
         "trainByDomain": true,
         "keepStopwords": true,
         "stemDict": {
-          "%kondisisalam%,selamat": {
+          "%kondisi.salam%,selamat": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%,met": {
+          "%kondisi.%kondisi.salam%%,selamat": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%,slmt": {
+          "%kondisi.salam%,met": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%,hai,,selamat": {
+          "%kondisi.%kondisi.salam%%,met": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%": {
+          "%kondisi.salam%,slmt": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%,bos": {
+          "%kondisi.%kondisi.salam%%,slmt": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%,bot": {
+          "%kondisi.salam%,hai,,selamat": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
-          "%kondisisalam%,halo,": {
+          "%kondisi.%kondisi.salam%%,hai,,selamat": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisi.salam%": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisi.%kondisi.salam%%": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisi.salam%,bos": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisi.%kondisi.salam%%,bos": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisi.salam%,bot": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisi.%kondisi.salam%%,bot": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisis.alam%,halo,": {
+            "domain": "default",
+            "intent": "sapaan.kabar"
+          },
+          "%kondisis.%kondisi.salam%%,halo,": {
             "domain": "default",
             "intent": "sapaan.kabar"
           },
@@ -100,11 +132,84 @@
           "?,bagaimana,kondisi": {
             "domain": "default",
             "intent": "sapaan.kabar.tanya"
+          },
+          "%kata.kerja%,%kata.nomina%,%subjek.dosen%,pak,tolong,": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.kerja%,%kata.nomina%,%subjek.%kata.nomina%%,%subjek.gender%k,tolong,": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%subjek.dosen%,cari,jadwal,pak,tolong,": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.kerja%n,%kata.nomina%l,%subjek.%kata.nomina%%,%subjek.gender%k,tolong,": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%subjek.dosen%,cari,lokasi,pak,tolong,": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.kerja%n,%kata.nomina%i,%subjek.%kata.nomina%%,%subjek.gender%k,tolong,": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.kerja%,%kata.nomina%,%kata.nomina%,%subjek.dosen%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.kerja%,%kata.nomina%,%kata.nomina%,%subjek.%kata.nomina%%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.nomina%,%kata.nomina%,%subjek.dosen%,%subjek.gender%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.nomina%,%kata.nomina%,%subjek.%kata.nomina%%,%subjek.gender%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.nomina%,%subjek.dosen%,%subjek.gender%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.nomina%,%subjek.%kata.nomina%%,%subjek.gender%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%subjek.dosen%,%subjek.gender%,dosen,lokasi": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%subjek.dosen%,%subjek.gender%,dosen,jadwal": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%subjek.dosen%,%subjek.gender%,dosen,lksi": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.nomina%i,%kata.nomina%n,%subjek.%kata.nomina%%,%subjek.gender%": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%subjek.dosen%,%subjek.gender%,dosen,jdwl": {
+            "domain": "default",
+            "intent": "cari.lihat"
+          },
+          "%kata.nomina%l,%kata.nomina%n,%subjek.%kata.nomina%%,%subjek.gender%": {
+            "domain": "default",
+            "intent": "cari.lihat"
           }
         },
         "intentDict": {
           "sapaan.kabar": "default",
-          "sapaan.kabar.tanya": "default"
+          "sapaan.kabar.tanya": "default",
+          "cari.lihat": "default"
         },
         "useStemDict": true,
         "domains": {
@@ -131,33 +236,66 @@
                 "intent": "default",
                 "utterance": [
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
                 "intent": "default",
                 "utterance": [
                   "met",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "met",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "met",
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "met",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
                 "intent": "default",
                 "utterance": [
                   "slmt",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "slmt",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "slmt",
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "slmt",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
@@ -165,42 +303,86 @@
                 "utterance": [
                   "hai,",
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "hai,",
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ]
               },
               {
                 "intent": "default",
                 "utterance": [
-                  "%kondisisalam%"
+                  "hai,",
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
                 ],
                 "tokens": [
-                  "%kondisisalam%"
+                  "hai,",
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
                 "intent": "default",
                 "utterance": [
-                  "%kondisisalam%",
+                  "%kondisi.salam%"
+                ],
+                "tokens": [
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "%kondisi.%kondisi.salam%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisi.salam%",
                   "bos"
                 ],
                 "tokens": [
-                  "%kondisisalam%",
+                  "%kondisi.salam%",
                   "bos"
                 ]
               },
               {
                 "intent": "default",
                 "utterance": [
-                  "%kondisisalam%",
+                  "%kondisi.%kondisi.salam%%",
+                  "bos"
+                ],
+                "tokens": [
+                  "%kondisi.%kondisi.salam%%",
+                  "bos"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisi.salam%",
                   "bot"
                 ],
                 "tokens": [
-                  "%kondisisalam%",
+                  "%kondisi.salam%",
+                  "bot"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kondisi.%kondisi.salam%%",
+                  "bot"
+                ],
+                "tokens": [
+                  "%kondisi.%kondisi.salam%%",
                   "bot"
                 ]
               },
@@ -208,11 +390,22 @@
                 "intent": "default",
                 "utterance": [
                   "halo,",
-                  "%kondisisalam%"
+                  "%kondisis.alam%"
                 ],
                 "tokens": [
                   "halo,",
-                  "%kondisisalam%"
+                  "%kondisis.alam%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "halo,",
+                  "%kondisis.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "halo,",
+                  "%kondisis.%kondisi.salam%%"
                 ]
               },
               {
@@ -312,18 +505,299 @@
                   "bagaimana",
                   "kondisi",
                   "?"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "pak",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "pak",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "tolong,",
+                  "cari",
+                  "jadwal",
+                  "pak",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "cari",
+                  "jadwal",
+                  "pak",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%l",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%l",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "tolong,",
+                  "cari",
+                  "lokasi",
+                  "pak",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "cari",
+                  "lokasi",
+                  "pak",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%i",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%i",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "lokasi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "lokasi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "jadwal",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "jadwal",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "lksi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "lksi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.nomina%i",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%i",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "jdwl",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "jdwl",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "default",
+                "utterance": [
+                  "%kata.nomina%l",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%l",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
                 ]
               }
             ],
             "features": {
-              "selamat": 2,
-              "%kondisisalam%": 8,
-              "met": 1,
-              "slmt": 1,
-              "hai,": 2,
-              "bos": 1,
-              "bot": 1,
-              "halo,": 1,
+              "selamat": 4,
+              "%kondisi.salam%": 7,
+              "%kondisi.%kondisi.salam%%": 7,
+              "met": 2,
+              "slmt": 2,
+              "hai,": 3,
+              "bos": 2,
+              "bot": 2,
+              "halo,": 2,
+              "%kondisis.alam%": 1,
+              "%kondisis.%kondisi.salam%%": 1,
               "hai": 1,
               "hi": 1,
               "hey": 1,
@@ -334,7 +808,25 @@
               "?": 4,
               "bagaimana": 2,
               "gimana": 1,
-              "kondisi": 1
+              "kondisi": 1,
+              "tolong,": 6,
+              "%kata.kerja%": 4,
+              "%kata.nomina%": 12,
+              "pak": 3,
+              "%subjek.dosen%": 10,
+              "%subjek.gender%k": 3,
+              "%subjek.%kata.nomina%%": 8,
+              "cari": 2,
+              "jadwal": 2,
+              "%kata.kerja%n": 2,
+              "%kata.nomina%l": 2,
+              "lokasi": 2,
+              "%kata.nomina%i": 2,
+              "%subjek.gender%": 10,
+              "dosen": 4,
+              "%kata.nomina%n": 2,
+              "lksi": 1,
+              "jdwl": 1
             },
             "isEditing": false,
             "className": "BrainNLU",
@@ -393,33 +885,66 @@
                 "intent": "sapaan.kabar",
                 "utterance": [
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
                 "intent": "sapaan.kabar",
                 "utterance": [
                   "met",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "met",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "met",
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "met",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
                 "intent": "sapaan.kabar",
                 "utterance": [
                   "slmt",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "slmt",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "slmt",
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "slmt",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
@@ -427,42 +952,86 @@
                 "utterance": [
                   "hai,",
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ],
                 "tokens": [
                   "hai,",
                   "selamat",
-                  "%kondisisalam%"
+                  "%kondisi.salam%"
                 ]
               },
               {
                 "intent": "sapaan.kabar",
                 "utterance": [
-                  "%kondisisalam%"
+                  "hai,",
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
                 ],
                 "tokens": [
-                  "%kondisisalam%"
+                  "hai,",
+                  "selamat",
+                  "%kondisi.%kondisi.salam%%"
                 ]
               },
               {
                 "intent": "sapaan.kabar",
                 "utterance": [
-                  "%kondisisalam%",
+                  "%kondisi.salam%"
+                ],
+                "tokens": [
+                  "%kondisi.salam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisi.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "%kondisi.%kondisi.salam%%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisi.salam%",
                   "bos"
                 ],
                 "tokens": [
-                  "%kondisisalam%",
+                  "%kondisi.salam%",
                   "bos"
                 ]
               },
               {
                 "intent": "sapaan.kabar",
                 "utterance": [
-                  "%kondisisalam%",
+                  "%kondisi.%kondisi.salam%%",
+                  "bos"
+                ],
+                "tokens": [
+                  "%kondisi.%kondisi.salam%%",
+                  "bos"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisi.salam%",
                   "bot"
                 ],
                 "tokens": [
-                  "%kondisisalam%",
+                  "%kondisi.salam%",
+                  "bot"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "%kondisi.%kondisi.salam%%",
+                  "bot"
+                ],
+                "tokens": [
+                  "%kondisi.%kondisi.salam%%",
                   "bot"
                 ]
               },
@@ -470,11 +1039,22 @@
                 "intent": "sapaan.kabar",
                 "utterance": [
                   "halo,",
-                  "%kondisisalam%"
+                  "%kondisis.alam%"
                 ],
                 "tokens": [
                   "halo,",
-                  "%kondisisalam%"
+                  "%kondisis.alam%"
+                ]
+              },
+              {
+                "intent": "sapaan.kabar",
+                "utterance": [
+                  "halo,",
+                  "%kondisis.%kondisi.salam%%"
+                ],
+                "tokens": [
+                  "halo,",
+                  "%kondisis.%kondisi.salam%%"
                 ]
               },
               {
@@ -574,18 +1154,299 @@
                   "bagaimana",
                   "kondisi",
                   "?"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "pak",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "pak",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "tolong,",
+                  "cari",
+                  "jadwal",
+                  "pak",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "cari",
+                  "jadwal",
+                  "pak",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%l",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%l",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "tolong,",
+                  "cari",
+                  "lokasi",
+                  "pak",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "cari",
+                  "lokasi",
+                  "pak",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%i",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "tolong,",
+                  "%kata.kerja%n",
+                  "%kata.nomina%i",
+                  "%subjek.gender%k",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.kerja%",
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "lokasi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "lokasi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "jadwal",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "jadwal",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "lksi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "lksi",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.nomina%i",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%i",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "jdwl",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ],
+                "tokens": [
+                  "jdwl",
+                  "dosen",
+                  "%subjek.gender%",
+                  "%subjek.dosen%"
+                ]
+              },
+              {
+                "intent": "cari.lihat",
+                "utterance": [
+                  "%kata.nomina%l",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
+                ],
+                "tokens": [
+                  "%kata.nomina%l",
+                  "%kata.nomina%n",
+                  "%subjek.gender%",
+                  "%subjek.%kata.nomina%%"
                 ]
               }
             ],
             "features": {
-              "selamat": 2,
-              "%kondisisalam%": 8,
-              "met": 1,
-              "slmt": 1,
-              "hai,": 2,
-              "bos": 1,
-              "bot": 1,
-              "halo,": 1,
+              "selamat": 4,
+              "%kondisi.salam%": 7,
+              "%kondisi.%kondisi.salam%%": 7,
+              "met": 2,
+              "slmt": 2,
+              "hai,": 3,
+              "bos": 2,
+              "bot": 2,
+              "halo,": 2,
+              "%kondisis.alam%": 1,
+              "%kondisis.%kondisi.salam%%": 1,
               "hai": 1,
               "hi": 1,
               "hey": 1,
@@ -596,7 +1457,25 @@
               "?": 4,
               "bagaimana": 2,
               "gimana": 1,
-              "kondisi": 1
+              "kondisi": 1,
+              "tolong,": 6,
+              "%kata.kerja%": 4,
+              "%kata.nomina%": 12,
+              "pak": 3,
+              "%subjek.dosen%": 10,
+              "%subjek.gender%k": 3,
+              "%subjek.%kata.nomina%%": 8,
+              "cari": 2,
+              "jadwal": 2,
+              "%kata.kerja%n": 2,
+              "%kata.nomina%l": 2,
+              "lokasi": 2,
+              "%kata.nomina%i": 2,
+              "%subjek.gender%": 10,
+              "dosen": 4,
+              "%kata.nomina%n": 2,
+              "lksi": 1,
+              "jdwl": 1
             },
             "isEditing": false,
             "className": "BrainNLU",
@@ -620,19 +1499,22 @@
               "labels": [],
               "network": {
                 "sizes": [
-                  19,
-                  2
+                  40,
+                  3
                 ],
                 "layers": [
                   {
                     "selamat": {},
-                    "%kondisisalam%": {},
+                    "%kondisi.salam%": {},
+                    "%kondisi.%kondisi.salam%%": {},
                     "met": {},
                     "slmt": {},
                     "hai,": {},
                     "bos": {},
                     "bot": {},
                     "halo,": {},
+                    "%kondisis.alam%": {},
+                    "%kondisis.%kondisi.salam%%": {},
                     "hai": {},
                     "hi": {},
                     "hey": {},
@@ -643,55 +1525,160 @@
                     "?": {},
                     "bagaimana": {},
                     "gimana": {},
-                    "kondisi": {}
+                    "kondisi": {},
+                    "tolong,": {},
+                    "%kata.kerja%": {},
+                    "%kata.nomina%": {},
+                    "pak": {},
+                    "%subjek.dosen%": {},
+                    "%subjek.gender%k": {},
+                    "%subjek.%kata.nomina%%": {},
+                    "cari": {},
+                    "jadwal": {},
+                    "%kata.kerja%n": {},
+                    "%kata.nomina%l": {},
+                    "lokasi": {},
+                    "%kata.nomina%i": {},
+                    "%subjek.gender%": {},
+                    "dosen": {},
+                    "lksi": {},
+                    "%kata.nomina%n": {},
+                    "jdwl": {}
                   },
                   {
                     "sapaan.kabar": {
-                      "bias": 11.67880249,
+                      "bias": 11.540992737,
                       "weights": {
-                        "selamat": 0.452214837,
-                        "%kondisisalam%": 4.653398514,
-                        "met": 0.403846413,
-                        "slmt": 0.418403268,
-                        "hai,": -0.134910569,
-                        "bos": 0.38058877,
-                        "bot": 0.376210004,
-                        "halo,": 0.377858877,
-                        "hai": 5.024725914,
-                        "hi": 5.004775047,
-                        "hey": 4.983273506,
-                        "halo": 4.960249901,
-                        "oy": 4.935694695,
-                        "apa": -1.470263958,
-                        "kabar": -3.946101904,
-                        "?": -6.204031467,
-                        "bagaimana": -3.206695795,
-                        "gimana": -1.527071476,
-                        "kondisi": -2.257927895
+                        "selamat": 0.49294889,
+                        "%kondisi.salam%": 4.726579666,
+                        "%kondisi.%kondisi.salam%%": 4.728125572,
+                        "met": 0.486934215,
+                        "slmt": 0.504918396,
+                        "hai,": -0.050946649,
+                        "bos": 0.43640995,
+                        "bot": 0.441914827,
+                        "halo,": 3.426385403,
+                        "%kondisis.alam%": 1.712396264,
+                        "%kondisis.%kondisi.salam%%": 1.713989854,
+                        "hai": 5.156457901,
+                        "hi": 5.140701771,
+                        "hey": 5.123557568,
+                        "halo": 5.105054379,
+                        "oy": 5.085222244,
+                        "apa": -1.485343933,
+                        "kabar": -3.934818745,
+                        "?": -6.13972044,
+                        "bagaimana": -3.19024682,
+                        "gimana": -1.464130759,
+                        "kondisi": -2.204902172,
+                        "tolong,": -3.2652421,
+                        "%kata.kerja%": -2.939047337,
+                        "%kata.nomina%": -4.036304474,
+                        "pak": -1.694560051,
+                        "%subjek.dosen%": -4.71371603,
+                        "%subjek.gender%k": -1.57068181,
+                        "%subjek.%kata.nomina%%": -4.55632019,
+                        "cari": -0.952692389,
+                        "jadwal": -0.925914347,
+                        "%kata.kerja%n": -0.971252441,
+                        "%kata.nomina%l": -1.180851579,
+                        "lokasi": -0.914142847,
+                        "%kata.nomina%i": -1.185094357,
+                        "%subjek.gender%": -4.407041073,
+                        "dosen": -1.915092111,
+                        "lksi": -0.527885437,
+                        "%kata.nomina%n": -1.394695401,
+                        "jdwl": -0.499842525
                       }
                     },
                     "sapaan.kabar.tanya": {
-                      "bias": 0.930104494,
+                      "bias": 0.604315221,
                       "weights": {
-                        "selamat": -0.630732358,
-                        "%kondisisalam%": -1.775787592,
-                        "met": -0.278460562,
-                        "slmt": -0.249922678,
-                        "hai,": 1.362921596,
-                        "bos": -0.155958891,
-                        "bot": -0.133116364,
-                        "halo,": -0.113984384,
-                        "hai": -0.926965237,
-                        "hi": -0.922533929,
-                        "hey": -0.917817831,
-                        "halo": -0.912820399,
-                        "oy": -0.907537222,
-                        "apa": 1.704510927,
-                        "kabar": 4.382027149,
-                        "?": 8.212966919,
-                        "bagaimana": 3.500839233,
-                        "gimana": 3.007615566,
-                        "kondisi": 3.830938339
+                        "selamat": -0.856814444,
+                        "%kondisi.salam%": -1.095425248,
+                        "%kondisi.%kondisi.salam%%": -1.080043912,
+                        "met": -0.373232573,
+                        "slmt": -0.323137969,
+                        "hai,": 1.353164792,
+                        "bos": -0.177210629,
+                        "bot": -0.150485322,
+                        "halo,": -0.581737399,
+                        "%kondisis.alam%": -0.301206708,
+                        "%kondisis.%kondisi.salam%%": -0.280530751,
+                        "hai": -0.601283491,
+                        "hi": -0.599146903,
+                        "hey": -0.596851528,
+                        "halo": -0.594400704,
+                        "oy": -0.591798246,
+                        "apa": 1.803331971,
+                        "kabar": 4.424035549,
+                        "?": 8.427427292,
+                        "bagaimana": 3.504674196,
+                        "gimana": 3.119419098,
+                        "kondisi": 4.003403664,
+                        "tolong,": -0.732388198,
+                        "%kata.kerja%": -0.484054446,
+                        "%kata.nomina%": -0.706828356,
+                        "pak": -0.393174887,
+                        "%subjek.dosen%": -0.823745966,
+                        "%subjek.gender%k": -0.339213312,
+                        "%subjek.%kata.nomina%%": -0.654365957,
+                        "cari": -0.192140654,
+                        "jadwal": -0.193047196,
+                        "%kata.kerja%n": -0.176777676,
+                        "%kata.nomina%l": -0.173648596,
+                        "lokasi": -0.152780592,
+                        "%kata.nomina%i": -0.155409962,
+                        "%subjek.gender%": -0.625139296,
+                        "dosen": -0.25008446,
+                        "lksi": -0.066665292,
+                        "%kata.nomina%n": -0.152280912,
+                        "jdwl": -0.029732034
+                      }
+                    },
+                    "cari.lihat": {
+                      "bias": 1.430660129,
+                      "weights": {
+                        "selamat": -1.352880955,
+                        "%kondisi.salam%": -2.161752224,
+                        "%kondisi.%kondisi.salam%%": -2.054781199,
+                        "met": -0.829055429,
+                        "slmt": -0.679726183,
+                        "hai,": -0.560875595,
+                        "bos": -0.409349114,
+                        "bot": -0.344351888,
+                        "halo,": -1.057811856,
+                        "%kondisis.alam%": -0.547805965,
+                        "%kondisis.%kondisi.salam%%": -0.510005832,
+                        "hai": -1.376814246,
+                        "hi": -1.369238615,
+                        "hey": -1.361375928,
+                        "halo": -1.353234291,
+                        "oy": -1.344822407,
+                        "apa": -0.194685459,
+                        "kabar": -0.632942915,
+                        "?": -0.851031482,
+                        "bagaimana": -0.449523747,
+                        "gimana": -0.206822306,
+                        "kondisi": -0.218088612,
+                        "tolong,": 0.494879633,
+                        "%kata.kerja%": 3.364652634,
+                        "%kata.nomina%": 3.729257584,
+                        "pak": 0.119867116,
+                        "%subjek.dosen%": 7.937022686,
+                        "%subjek.gender%k": 0.375012547,
+                        "%subjek.%kata.nomina%%": 7.85631752,
+                        "cari": 4.876158237,
+                        "jadwal": 1.840044618,
+                        "%kata.kerja%n": 3.956018925,
+                        "%kata.nomina%l": 2.609871387,
+                        "lokasi": 1.803243279,
+                        "%kata.nomina%i": 2.581913233,
+                        "%subjek.gender%": 3.596490383,
+                        "dosen": 1.996128201,
+                        "lksi": 1.624120712,
+                        "%kata.nomina%n": 1.235758305,
+                        "jdwl": 1.604886889
                       }
                     }
                   }
@@ -714,35 +1701,67 @@
     "extraSentences": [
       [
         "id",
-        "Selamat %kondisisalam%"
+        "Selamat %kondisi.salam%"
       ],
       [
         "id",
-        "Met %kondisisalam%"
+        "Selamat %kondisi.%kondisi.salam%%"
       ],
       [
         "id",
-        "Slmt %kondisisalam%"
+        "Met %kondisi.salam%"
       ],
       [
         "id",
-        "Hai, selamat %kondisisalam%"
+        "Met %kondisi.%kondisi.salam%%"
       ],
       [
         "id",
-        "%kondisisalam%"
+        "Slmt %kondisi.salam%"
       ],
       [
         "id",
-        "%kondisisalam% bos"
+        "Slmt %kondisi.%kondisi.salam%%"
       ],
       [
         "id",
-        "%kondisisalam% bot"
+        "Hai, selamat %kondisi.salam%"
       ],
       [
         "id",
-        "Halo, %kondisisalam%"
+        "Hai, selamat %kondisi.%kondisi.salam%%"
+      ],
+      [
+        "id",
+        "%kondisi.salam%"
+      ],
+      [
+        "id",
+        "%kondisi.%kondisi.salam%%"
+      ],
+      [
+        "id",
+        "%kondisi.salam% bos"
+      ],
+      [
+        "id",
+        "%kondisi.%kondisi.salam%% bos"
+      ],
+      [
+        "id",
+        "%kondisi.salam% bot"
+      ],
+      [
+        "id",
+        "%kondisi.%kondisi.salam%% bot"
+      ],
+      [
+        "id",
+        "Halo, %kondisis.alam%"
+      ],
+      [
+        "id",
+        "Halo, %kondisis.%kondisi.salam%%"
       ],
       [
         "id",
@@ -779,6 +1798,86 @@
       [
         "id",
         "Bagaimana kondisimu ?"
+      ],
+      [
+        "id",
+        "Tolong, %kata.kerja% %kata.nomina% pak %subjek.dosen%"
+      ],
+      [
+        "id",
+        "Tolong, %kata.kerja% %kata.nomina% %subjek.gender%k %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "Tolong, carikan jadwal pak %subjek.dosen%"
+      ],
+      [
+        "id",
+        "Tolong, %kata.kerja%n %kata.nomina%l %subjek.gender%k %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "Tolong, carikan lokasi pak %subjek.dosen%"
+      ],
+      [
+        "id",
+        "Tolong, %kata.kerja%n %kata.nomina%i %subjek.gender%k %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "%kata.kerja% %kata.nomina% %kata.nomina% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.kerja% %kata.nomina% %kata.nomina% %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "%kata.nomina% %kata.nomina% %subjek.gender% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.nomina% %kata.nomina% %subjek.gender% %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "%kata.nomina% %subjek.gender% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.nomina% %subjek.gender% %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "lokasi dosen %subjek.gender% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.nomina%i %kata.nomina%n %subjek.gender% %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "jadwal dosen %subjek.gender% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.nomina%l %kata.nomina%n %subjek.gender% %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "lksi dosen %subjek.gender% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.nomina%i %kata.nomina%n %subjek.gender% %subjek.%kata.nomina%%"
+      ],
+      [
+        "id",
+        "jdwl dosen %subjek.gender% %subjek.dosen%"
+      ],
+      [
+        "id",
+        "%kata.nomina%l %kata.nomina%n %subjek.gender% %subjek.%kata.nomina%%"
       ]
     ]
   },
@@ -802,9 +1901,9 @@
       "URL"
     ],
     "namedEntities": {
-      "kondisisalam": {
+      "kondisi.salam": {
         "type": "enum",
-        "name": "kondisisalam",
+        "name": "kondisi.salam",
         "localeFallback": {
           "*": "en"
         },
@@ -825,9 +1924,9 @@
           }
         }
       },
-      "kondisinetral": {
+      "kondisi.netral": {
         "type": "enum",
-        "name": "kondisinetral",
+        "name": "kondisi.netral",
         "localeFallback": {
           "*": "en"
         },
@@ -844,9 +1943,9 @@
           }
         }
       },
-      "kondisibaik": {
+      "kondisi.baik": {
         "type": "enum",
-        "name": "kondisibaik",
+        "name": "kondisi.baik",
         "localeFallback": {
           "*": "en"
         },
@@ -859,9 +1958,9 @@
           }
         }
       },
-      "kondisiburuk": {
+      "kondisi.buruk": {
         "type": "enum",
-        "name": "kondisiburuk",
+        "name": "kondisi.buruk",
         "localeFallback": {
           "*": "en"
         },
@@ -869,7 +1968,7 @@
           "id": {
             "Buruk": [
               "buruk",
-              "Buruh"
+              "Buruk"
             ],
             "Sedih": [
               "sedih",
@@ -881,14 +1980,262 @@
             ]
           }
         }
+      },
+      "hari": {
+        "type": "enum",
+        "name": "hari",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Senin": [
+              "Senin",
+              "senin"
+            ],
+            "Selasa": [
+              "Selasa",
+              "selasa"
+            ],
+            "Rabu": [
+              "Rabu",
+              "rabu"
+            ],
+            "Kamis": [
+              "Kamis",
+              "kamis"
+            ],
+            "Jumat": [
+              "Jumat",
+              "jumat"
+            ],
+            "Sabtu": [
+              "Sabtu",
+              "sabtu"
+            ],
+            "Minggu": [
+              "Minggu",
+              "minggu"
+            ]
+          }
+        }
+      },
+      "kata.kerja": {
+        "type": "enum",
+        "name": "kata.kerja",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Cari": [
+              "Carikan",
+              "carikan",
+              "Cari",
+              "cari"
+            ],
+            "Lihat": [
+              "Lihatkan",
+              "lihatkan",
+              "lihat",
+              "Lihat"
+            ]
+          }
+        }
+      },
+      "kata.nomina": {
+        "type": "enum",
+        "name": "kata.nomina",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Jadwal": [
+              "Jadwal",
+              "jadwal",
+              "jdwl",
+              "jadual",
+              "Jadual",
+              "Jdwl"
+            ],
+            "Dosen": [
+              "Dosen",
+              "dosen",
+              "dsn",
+              "dosn"
+            ],
+            "Lokasi": [
+              "Lokasi",
+              "lokasi",
+              "lksi"
+            ]
+          }
+        }
+      },
+      "subjek.gender": {
+        "type": "enum",
+        "name": "subjek.gender",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Bapak": [
+              "Pak",
+              "Bapak",
+              "pak",
+              "bapak"
+            ],
+            "Ibu": [
+              "Buk",
+              "buk",
+              "Ibu",
+              "ibu",
+              "bu",
+              "Bu"
+            ]
+          }
+        }
+      },
+      "subjek.dosen": {
+        "type": "enum",
+        "name": "subjek.dosen",
+        "localeFallback": {
+          "*": "en"
+        },
+        "locales": {
+          "id": {
+            "Ahmad Habib, S.Kom., M.M.": [
+              "Habib",
+              "Ahmad Habib",
+              "habib",
+              "ahmad habib"
+            ],
+            "Supangat, S.Kom., M.MKom.": [
+              "Supangat",
+              "Pangat",
+              "supangat",
+              "pangat"
+            ],
+            "Fridy Mandita, S.Kom., M.Sc.": [
+              "Fridy",
+              "fridy"
+            ],
+            "Roenadi Koesdijarto, Ir.": [
+              "Roenadi",
+              "Roen",
+              "roenadi",
+              "roen"
+            ],
+            "Geri Kusnanto, S.Kom., M.M.": [
+              "Geri",
+              "geri",
+              "gery",
+              "Gery"
+            ],
+            "Agus Darwanto, Ir.": [
+              "Agus",
+              "Adar",
+              "dar",
+              "Dar",
+              "adar",
+              "agus dar",
+              "Agus Dar"
+            ],
+            "Moh. Sidqon, S.Si., M.Si.": [
+              "Sidqon",
+              "sidqon"
+            ],
+            "Mohammad Firdaus, S.Kom., M.Kom.": [
+              "Firdaus",
+              "firdaus",
+              "Fir",
+              "fir"
+            ],
+            "Sugiono, IR., M.T.": [
+              "Sugiono",
+              "sugiono",
+              "sugi",
+              "Sugi",
+              "gik",
+              "Gik",
+              "sgk",
+              "SGK",
+              "Sgk"
+            ],
+            "Muaffaq A. Jani, Dr., Ir., M.Eng.": [
+              "Muaffaq",
+              "muaffaq",
+              "Muaffak",
+              "muaffak",
+              "muafaq",
+              "Muafaq"
+            ],
+            "Ery Sadewa Yudha, W., S.Kom, M.M.": [
+              "Ery",
+              "ery",
+              "eri",
+              "Eri"
+            ],
+            "Fajar Astuti H., S.Kom., M.Kom.": [
+              "Fajar",
+              "fajar"
+            ],
+            "Agyl Ardi Rahmadi, S.Kom., M.A": [
+              "Agyl",
+              "agil"
+            ],
+            "Agung Kridoyono, S.ST., MT.": [
+              "Agung",
+              "agung"
+            ],
+            "Agus Hermanto, S.KOM., M.MT., ITIL, COBIT": [
+              "Aher",
+              "aher",
+              "agus",
+              "Agus"
+            ],
+            "Berlian Al Kindhi, S.ST., MT.": [
+              "Berlian",
+              "berlian"
+            ]
+          }
+        }
       }
     }
   },
   "slotManager": {
     "sapaan.kabar": {
-      "kondisisalam": {
+      "kondisi.salam": {
         "intent": "sapaan.kabar",
-        "entity": "kondisisalam",
+        "entity": "kondisi.salam",
+        "mandatory": false,
+        "locales": {}
+      }
+    },
+    "cari.lihat": {
+      "kata.kerja": {
+        "intent": "cari.lihat",
+        "entity": "kata.kerja",
+        "mandatory": false,
+        "locales": {}
+      },
+      "kata.nomina": {
+        "intent": "cari.lihat",
+        "entity": "kata.nomina",
+        "mandatory": false,
+        "locales": {}
+      },
+      "subjek.dosen": {
+        "intent": "cari.lihat",
+        "entity": "subjek.dosen",
+        "mandatory": false,
+        "locales": {}
+      },
+      "subjek.gender": {
+        "intent": "cari.lihat",
+        "entity": "subjek.gender",
         "mandatory": false,
         "locales": {}
       }
@@ -918,13 +2265,13 @@
           "response": "Aye Aye"
         },
         {
-          "response": "{{kondisisalam}}"
+          "response": "{{kondisi.salam}}"
         },
         {
-          "response": "Selamat {{kondisisalam}} juga"
+          "response": "Selamat {{kondisi.salam}} juga"
         },
         {
-          "response": "{{kondisisalam}} juga"
+          "response": "{{kondisi.salam}} juga"
         }
       ]
     }
