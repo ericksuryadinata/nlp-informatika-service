@@ -6,7 +6,8 @@ class DosenController {
     request,
     response
   }){
-    return "hallo"
+    const req = request.all()
+    return req.NIDN
   }
 }
 
