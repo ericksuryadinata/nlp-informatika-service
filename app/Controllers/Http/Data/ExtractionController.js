@@ -1,6 +1,9 @@
 'use strict'
 
-const { NlpManager } = use('node-nlp')
+const {
+  NlpManager,
+  ConversationContext
+} = use('node-nlp')
 const { validate } = use('Validator')
 class ExtractionController {
   async index ({
@@ -18,8 +21,9 @@ class ExtractionController {
     if (!validation.fails()) {
       try {
         const manager = new NlpManager()
+        const context = new ConversationContext()
         manager.load('source/model.nlp')
-        const process = await manager.process('id', req.sentence)
+        const process = await manager.process('id', req.sentence, context)
         return response.json({
           'status': 'success',
           'result': process

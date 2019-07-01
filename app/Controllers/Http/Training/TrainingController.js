@@ -68,7 +68,7 @@ class TrainingController {
         manager.addNamedEntityText('subjek.dosen', 'Agus Darwanto, Ir.', ['id'], ['Agus', 'Adar', 'dar', 'Dar', 'adar', 'agus dar', 'Agus Dar'])
         manager.addNamedEntityText('subjek.dosen', 'Moh. Sidqon, S.Si., M.Si.', ['id'], ['Sidqon', 'sidqon'])
         manager.addNamedEntityText('subjek.dosen', 'Mohammad Firdaus, S.Kom., M.Kom.', ['id'], ['Firdaus', 'firdaus', 'Fir', 'fir'])
-        manager.addNamedEntityText('subjek.dosen', 'Sugiono, IR., M.T.', ['id'], ['Sugiono', 'sugiono', 'sugi', 'Sugi', 'gik', 'Gik', 'sgk', 'SGK', 'Sgk'])
+        manager.addNamedEntityText('subjek.dosen', 'Sugiono, IR., M.T.', ['id'], ['Sugiono', 'sugiono', 'sugi', 'Sugi', 'gik', 'Gik', 'sgk', 'SGK', 'Sgk', 'sugik'])
         manager.addNamedEntityText('subjek.dosen', 'Muaffaq A. Jani, Dr., Ir., M.Eng.', ['id'], ['Muaffaq', 'muaffaq', 'Muaffak', 'muaffak', 'muafaq', 'Muafaq'])
         manager.addNamedEntityText('subjek.dosen', 'Ery Sadewa Yudha, W., S.Kom, M.M.', ['id'], ['Ery', 'ery', 'eri', 'Eri'])
         manager.addNamedEntityText('subjek.dosen', 'Fajar Astuti H., S.Kom., M.Kom.', ['id'], ['Fajar', 'fajar'])
@@ -96,16 +96,14 @@ class TrainingController {
         manager.addDocument('id', 'Bagaimana kabarmu ?', 'sapaan.kabar.tanya')
         manager.addDocument('id', 'Gimana kabarmu ?', 'sapaan.kabar.tanya')
         manager.addDocument('id', 'Bagaimana kondisimu ?', 'sapaan.kabar.tanya')
-        manager.addDocument('id', 'Tolong, %kata.kerja% %kata.nomina% pak %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', 'Tolong, carikan jadwal pak %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', 'Tolong, carikan lokasi pak %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', '%kata.kerja% %kata.nomina% %kata.nomina% %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', '%kata.nomina% %kata.nomina% %subjek.gender% %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', '%kata.nomina% %subjek.gender% %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', 'lokasi dosen %subjek.gender% %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', 'jadwal dosen %subjek.gender% %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', 'lksi dosen %subjek.gender% %subjek.dosen%', 'cari.lihat')
-        manager.addDocument('id', 'jdwl dosen %subjek.gender% %subjek.dosen%', 'cari.lihat')
+        manager.addDocument('id', 'Tolong, carikan jadwal pak %subjek.dosen%', 'cari.lihat.jadwal.dosen')
+        manager.addDocument('id', 'lokasi dosen %subjek.gender% %subjek.dosen%', 'cari.lihat.lokasi.dosen')
+        manager.addDocument('id', 'Tolong, carikan lokasi pak %subjek.dosen%', 'cari.lihat.lokasi.dosen')
+        manager.addDocument('id', 'jadwal dosen %subjek.gender% %subjek.dosen%', 'cari.lihat.jadwal.dosen')
+        manager.addDocument('id', 'lksi dosen %subjek.gender% %subjek.dosen%', 'cari.lihat.lokasi.dosen')
+        manager.addDocument('id', 'jdwl dosen %subjek.gender% %subjek.dosen%', 'cari.lihat.jadwal.dosen')
+        manager.addDocument('id', 'carikan jadwal pak %subjek.dosen%', 'cari.lihat.jadwal.dosen')
+        manager.addDocument('id', 'carikan lokasi pak %subjek.dosen%', 'cari.lihat.lokasi.dosen')
 
         // possible answer
         manager.addAnswer('id', 'sapaan.kabar.tanya', 'Baik - Baik')
@@ -117,8 +115,13 @@ class TrainingController {
         manager.addAnswer('id', 'sapaan.kabar', '{{kondisi.salam}}')
         manager.addAnswer('id', 'sapaan.kabar', 'Selamat {{kondisi.salam}} juga')
         manager.addAnswer('id', 'sapaan.kabar', '{{kondisi.salam}} juga')
+        manager.addAnswer('id', 'cari.lihat.lokasi.dosen','lokasi pak {{ subjek.dosen }} berada di')
+        manager.addAnswer('id', 'cari.lihat.jadwal.dosen', 'jadwal pak {{ subjek.dosen }} berada di')
         await manager.train()
         manager.save('source/model.nlp')
+        return response.status(200).json({
+          'status' : 'success'
+        })
       }else{
         return response.status(401).json({
           'status': 'failed',
