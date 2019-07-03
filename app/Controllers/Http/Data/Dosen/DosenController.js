@@ -74,7 +74,7 @@ class DosenController {
       // return response.json({
       //   'status': 'failed'
       // })
-      return req.nidn + ' / ' + req.location_rfid
+      return req.nidn.replace(/\s/g,"") + ' / ' + req.location_rfid
     } catch (error) {
       return response.status(500).json({
         'status': 'failed',
