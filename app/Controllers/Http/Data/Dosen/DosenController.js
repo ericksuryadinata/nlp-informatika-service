@@ -63,18 +63,17 @@ class DosenController {
     const req = request.all()
     try {
       const dosen = await Dosen.query().where('nidn', req.nidn).first()
-      // if (dosen) {
-      //   dosen.location_rfid = req.location_rfid;
-      //   dosen.location_rfid_timestamp = Moment().format('Y-MM-DD HH:mm:ss');
-      //   await dosen.save();
-      //   return response.json({
-      //     'status': 'success'
-      //   })
-      // }
-      // return response.json({
-      //   'status': 'failed'
-      // })
-      return req.nidn.replace(/\s/g,"") + ' / ' + req.location_rfid
+      if (dosen) {
+        dosen.location_rfid = req.location_rfid;
+        dosen.location_rfid_timestamp = Moment().format('Y-MM-DD HH:mm:ss');
+        await dosen.save();
+        return response.json({
+          'status': 'success'
+        })
+      }
+      return response.json({
+        'status': 'failed'
+      })
     } catch (error) {
       return response.status(500).json({
         'status': 'failed',
