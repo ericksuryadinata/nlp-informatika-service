@@ -6,8 +6,6 @@
 const Route = use('Route')
 
 Route.post('extraction', 'ExtractionController.index').as('extraction')
-Route.post('test', 'ExtractionController.test').as('test')
-
 
 Route.get('dosen/random','Dosen/DosenController.random').as('dosen.random')
 Route.get('dosen/android','Dosen/DosenController.android').as('dosen.android')

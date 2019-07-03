@@ -42,17 +42,6 @@ class ExtractionController {
       })
     }
   }
-
-  async test({
-    request,
-    response
-  }){
-    const req = request.all()
-    return response.json({
-      'status':'success',
-      'request':req.sentence
-    })
-  }
 }
 
 module.exports = ExtractionController
