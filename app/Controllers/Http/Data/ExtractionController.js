@@ -47,8 +47,10 @@ class ExtractionController {
     request,
     response
   }){
+    const req = request.all()
     return response.json({
-      'status':'success'
+      'status':'success',
+      'request':req.sentence
     })
   }
 }
