@@ -6,6 +6,7 @@ const {
 } = use('node-nlp')
 const { validate } = use('Validator')
 class ExtractionController {
+
   async index ({
     request,
     response

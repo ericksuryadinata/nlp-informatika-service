@@ -6,4 +6,3 @@
 const Route = use('Route')
 
 Route.post('/', 'TrainingController.index').as('index')
-Route.post('/test', 'TestController.index').as('index')
