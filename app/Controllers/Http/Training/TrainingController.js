@@ -6,7 +6,7 @@ const {
 
 const {
   validate
-} =  use('Validator')
+} = use('Validator')
 class TrainingController {
 
   /**
@@ -15,7 +15,7 @@ class TrainingController {
    * @param {request} request
    * @param {response} response
    */
-  async index ({
+  async index({
     request,
     response
   }) {
@@ -27,12 +27,12 @@ class TrainingController {
     }
 
     const validation = await validate({
-      name : req.name,
+      name: req.name,
       password: req.password
     }, rules)
-    if(!validation.fails()){
+    if (!validation.fails()) {
 
-      if(req.name === 'erick' && req.password === 'erick'){
+      if (req.name === 'erick' && req.password === 'erick') {
         const manager = new NlpManager({
           languages: ['id'],
           threshold: 0.9
@@ -59,17 +59,17 @@ class TrainingController {
         manager.addNamedEntityText('kataNomina', 'Jadwal', ['id'], ['Jadwal', 'jadwal', 'jdwl', 'jadual', 'Jadual', 'Jdwl'])
         manager.addNamedEntityText('kataNomina', 'Dosen', ['id'], ['Dosen', 'dosen', 'dsn', 'dosn'])
         manager.addNamedEntityText('kataNomina', 'Lokasi', ['id'], ['Lokasi', 'lokasi', 'lksi'])
-        manager.addNamedEntityText('subjekGender', 'Bapak',['id'], ['Pak', 'Bapak', 'pak', 'bapak'])
+        manager.addNamedEntityText('subjekGender', 'Bapak', ['id'], ['Pak', 'Bapak', 'pak', 'bapak'])
         manager.addNamedEntityText('subjekGender', 'Ibu', ['id'], ['Buk', 'buk', 'Ibu', 'ibu', 'bu', 'Bu'])
         manager.addNamedEntityText('subjekDosen', 'Ahmad Habib, S.Kom., M.M.', ['id'], ['Habib', 'Ahmad Habib', 'habib', 'ahmad habib'])
         manager.addNamedEntityText('subjekDosen', 'Supangat, S.Kom., M.MKom.', ['id'], ['Supangat', 'Pangat', 'supangat', 'pangat'])
         manager.addNamedEntityText('subjekDosen', 'Fridy Mandita, S.Kom., M.Sc.', ['id'], ['Fridy', 'fridy'])
         manager.addNamedEntityText('subjekDosen', 'Roenadi Koesdijarto, Ir.', ['id'], ['Roenadi', 'Roen', 'roenadi', 'roen', 'roe', 'Roe'])
-        manager.addNamedEntityText('subjekDosen', 'Geri Kusnanto, S.Kom., M.M.', ['id'], ['Geri', 'geri', 'gery', 'Gery'])
+        manager.addNamedEntityText('subjekDosen', 'Geri Kusnanto, S.Kom., MM.', ['id'], ['Geri', 'geri', 'gery', 'Gery'])
         manager.addNamedEntityText('subjekDosen', 'Agus Darwanto, Ir.', ['id'], ['Agus', 'Adar', 'dar', 'Dar', 'adar', 'agus dar', 'Agus Dar'])
         manager.addNamedEntityText('subjekDosen', 'Moh. Sidqon, S.Si., M.Si.', ['id'], ['Sidqon', 'sidqon'])
         manager.addNamedEntityText('subjekDosen', 'Mohammad Firdaus, S.Kom., M.Kom.', ['id'], ['Firdaus', 'firdaus', 'Fir', 'fir'])
-        manager.addNamedEntityText('subjekDosen', 'Sugiono, IR., M.T.', ['id'], ['Sugiono', 'sugiono', 'sugi', 'Sugi', 'gik', 'Gik', 'sgk', 'SGK', 'Sgk', 'sugik'])
+        manager.addNamedEntityText('subjekDosen', 'Ir. Sugiono, MT', ['id'], ['Sugiono', 'sugiono', 'sugi', 'Sugi', 'gik', 'Gik', 'sgk', 'SGK', 'Sgk', 'sugik'])
         manager.addNamedEntityText('subjekDosen', 'Muaffaq A. Jani, Dr., Ir., M.Eng.', ['id'], ['Muaffaq', 'muaffaq', 'Muaffak', 'muaffak', 'muafaq', 'Muafaq'])
         manager.addNamedEntityText('subjekDosen', 'Ery Sadewa Yudha, W., S.Kom, M.M.', ['id'], ['Ery', 'ery', 'eri', 'Eri'])
         manager.addNamedEntityText('subjekDosen', 'Fajar Astuti H., S.Kom., M.Kom.', ['id'], ['Fajar', 'fajar'])
@@ -181,7 +181,7 @@ class TrainingController {
         manager.addAnswer('id', 'cariLokasiDosenGeneral', '{{subjekGender}} {{subjekDosen}} sekarang ada di')
         manager.addAnswer('id', 'cariLokasiDosenGeneral', '{{subjekGender}} {{subjekDosen}} saat ini ada di')
 
-        manager.addAnswer('id', 'cariLokasiDosenLaki','lokasi pak {{subjekDosen}} berada di')
+        manager.addAnswer('id', 'cariLokasiDosenLaki', 'lokasi pak {{subjekDosen}} berada di')
         manager.addAnswer('id', 'cariLokasiDosenLaki', 'posisi pak {{subjekDosen}} berada di')
         manager.addAnswer('id', 'cariLokasiDosenLaki', 'pak {{subjekDosen}} berada di')
         manager.addAnswer('id', 'cariLokasiDosenLaki', 'pak {{subjekDosen}} sekarang ada di')
@@ -197,16 +197,16 @@ class TrainingController {
         await manager.train()
         manager.save('source/model.nlp')
         return response.status(200).json({
-          'status' : 'success'
+          'status': 'success'
         })
-      }else{
+      } else {
         return response.status(401).json({
           'status': 'failed',
           'message': 'username atau password salah'
         })
       }
 
-    }else{
+    } else {
       return response.status(401).json({
         'status': 'failed',
         'message': validation.messages()

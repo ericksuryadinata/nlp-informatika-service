@@ -1,6 +1,7 @@
 'use strict'
 
 const Dosen = use('App/Models/Dosen')
+const LokasiDosen = use('App/Models/LokasiDosen')
 const Moment = use('moment')
 
 class DosenController {
@@ -10,7 +11,7 @@ class DosenController {
     response
   }){
     const req = request.all()
-    return req.NIDN
+    return req.nidn
   }
 
   async android({
@@ -19,26 +20,26 @@ class DosenController {
   }){
     const req = request.all()
     try {
-      const dosenPhone = await Dosen.query().where('phone_number', req.phone_number).first();
+      const dosenPhone = await Dosen.query().where('phone_number', req.phone_number).first()
       if (dosenPhone) {
-        dosenPhone.latitude = req.latitude;
-        dosenPhone.longitude = req.longitude;
-        dosenPhone.geocode = req.geocode;
-        dosenPhone.lat_long_timestamp = req.timestamp;
-        dosenPhone.imei = req.imei;
-        await dosenPhone.save();
+        dosenPhone.latitude = req.latitude
+        dosenPhone.longitude = req.longitude
+        dosenPhone.geocode = req.geocode
+        dosenPhone.lat_long_timestamp = req.timestamp
+        dosenPhone.imei = req.imei
+        await dosenPhone.save()
         return response.json({
           'status': 'success'
         })
       }
       const dosenImei = await Dosen.query().where('imei', imei).first()
       if (dosenImei) {
-        dosenImei.latitude = req.latitude;
-        dosenImei.longitude = req.longitude;
-        dosenImei.geocode = req.geocode;
-        dosenImei.lat_long_timestamp = req.timestamp;
-        dosenImei.imei = req.imei;
-        await dosenImei.save();
+        dosenImei.latitude = req.latitude
+        dosenImei.longitude = req.longitude
+        dosenImei.geocode = req.geocode
+        dosenImei.lat_long_timestamp = req.timestamp
+        dosenImei.imei = req.imei
+        await dosenImei.save()
         return response.json({
           'status': 'success'
         })
@@ -62,11 +63,12 @@ class DosenController {
   }){
     const req = request.all()
     try {
-      const dosen = await Dosen.query().where('nidn', req.nidn).first()
+      const dosen = await Dosen.query().where('nip', req.nip).first()
       if (dosen) {
-        dosen.location_rfid = req.location_rfid;
-        dosen.location_rfid_timestamp = Moment().format('Y-MM-DD HH:mm:ss');
-        await dosen.save();
+        await LokasiDosen.query().where('nip',req.nip).update({
+          location_timestamp : Moment().format('Y-MM-DD HH:mm:ss'),
+          location_rfid : req.location_rfid
+        })
         return response.json({
           'status': 'success'
         })
