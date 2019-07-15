@@ -25,7 +25,7 @@ class ExtractionController {
         const context = new ConversationContext()
         manager.load('source/model.nlp')
         const process = await manager.process('id', req.sentence)
-        console.log(req.sentence);
+        
         return response.json({
           'status': 'success',
           'result': process

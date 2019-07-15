@@ -9,7 +9,7 @@ class DosenController {
   async random({
     request,
     response
-  }){
+  }) {
     const req = request.all()
     return req.nidn
   }
@@ -17,40 +17,29 @@ class DosenController {
   async android({
     request,
     response
-  }){
+  }) {
     const req = request.all()
     try {
-      const dosen = await Dosen.query().where('nip', req.nip).first()
+      let dosen = await Dosen.query().where('imei', req.imei).first()
+      let lokasiDosen = new LokasiDosen()
       if (dosen) {
-          const lokasiDosen = new LokasiDosen()
-          return response.json({
-            'status': 'success'
-          })
-        await dosenPhone.save()
+        lokasiDosen.nip = dosen.nip
+        lokasiDosen.latitude = req.latitude
+        lokasiDosen.longitude = req.longitude
+        lokasiDosen.geocode = req.geocode
+        lokasiDosen.timestamp = Moment().format('Y-MM-DD HH:mm:ss')
+        await lokasiDosen.save()
         return response.json({
           'status': 'success'
         })
       }
-      const dosenImei = await Dosen.query().where('imei', imei).first()
-      if (dosenImei) {
-        dosenImei.latitude = req.latitude
-        dosenImei.longitude = req.longitude
-        dosenImei.geocode = req.geocode
-        dosenImei.lat_long_timestamp = req.timestamp
-        dosenImei.imei = req.imei
-        await dosenImei.save()
-        return response.json({
-          'status': 'success'
-        })
-      }
-
       return response.json({
-        'status':'failed'
+        'status': 'failed'
       })
     } catch (error) {
       return response.status(500).json({
-        'status' : 'failed',
-        'error' : error.message
+        'status': 'failed',
+        'error': error.message
       })
     }
 
@@ -59,15 +48,16 @@ class DosenController {
   async rfid({
     request,
     response
-  }){
+  }) {
     const req = request.all()
     try {
       const dosen = await Dosen.query().where('nip', req.nip).first()
+      let lokasiDosen = new LokasiDosen()
       if (dosen) {
-        await LokasiDosen.query().where('nip',req.nip).update({
-          location_timestamp : Moment().format('Y-MM-DD HH:mm:ss'),
-          location_rfid : req.location_rfid
-        })
+        lokasiDosen.nip = dosen.nip
+        lokasiDosen.location_rfid = req.location_rfid
+        lokasiDosen.timestamp = Moment().format('Y-MM-DD HH:mm:ss')
+        await lokasiDosen.save()
         return response.json({
           'status': 'success'
         })

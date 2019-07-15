@@ -7,6 +7,13 @@ class Prosedur extends Model {
   static get table() {
     return 'prosedur'
   }
+  static get createdAtColumn() {
+    return null
+  }
+
+  static get updatedAtColumn() {
+    return null
+  }
 }
 
 module.exports = Prosedur

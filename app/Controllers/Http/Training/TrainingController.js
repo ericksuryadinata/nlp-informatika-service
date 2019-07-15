@@ -61,6 +61,7 @@ class TrainingController {
         manager.addNamedEntityText('kataJadwal', 'Jadwal', ['id'], ['Jadwal', 'jadwal', 'jdwl', 'jadual', 'Jadual', 'Jdwl'])
         manager.addNamedEntityText('kataLokasi', 'Lokasi', ['id'], ['Lokasi', 'lokasi', 'lksi'])
         manager.addNamedEntityText('tugasAkhir', 'Tugas Akhir', ['id'], ['TA', 'ta', 'tugas akhir', 'Tugas Akhir'])
+        manager.addNamedEntityText('kerjaPraktek', 'Kerja Praktek', ['id'], ['KP', 'kp', 'kerja praktek', 'Kerja Praktek'])
         // manager.addRegexEntity('nbi', 'id', /^\d{9}$|^\d{10}$/gi)
         manager.addNamedEntityText('subjekGender', 'Bapak', ['id'], ['Pak', 'Bapak', 'pak', 'bapak'])
         manager.addNamedEntityText('subjekGender', 'Ibu', ['id'], ['Buk', 'buk', 'Ibu', 'ibu', 'bu', 'Bu'])
@@ -83,7 +84,22 @@ class TrainingController {
         manager.addNamedEntityText('subjekDosen', 'Berlian Al Kindhi, S.ST., MT.', ['id'], ['Berlian', 'berlian'])
         manager.addNamedEntityText('subjekDosen', 'Luvia Friska Narulita, S.ST., MT', ['id'], ['Luvia', 'luvia', 'Friska', 'friska'])
         manager.addNamedEntityText('subjekDosen', 'Anang Pramono, S.Kom., MM', ['id'], ['Anang', 'anang', 'Anang Pramono', 'anang pramono'])
-
+        manager.addNamedEntityText('namaPraktikum', 'Dasar Komputer dan Internet', ['id'], ['daskom', 'dasar komputer', 'dasar komputer internet'])
+        manager.addNamedEntityText('namaPraktikum', 'Pengembangan Teknologi Website', ['id'], ['PTW', 'web', 'pengembangan teknologi website', 'ptw'])
+        manager.addNamedEntityText('namaPraktikum', 'Pengembangan Teknologi Mobile', ['id'], ['PTM', 'android', 'ptm', 'teknologi mobile'])
+        manager.addNamedEntityText('namaPraktikum', 'Pemrograman Dasar', ['id'], ['progdas', 'program dasar'])
+        manager.addNamedEntityText('namaPraktikum', 'Komputer Aplikasi', ['id'], ['Komputer Aplikasi', 'kompapp'])
+        manager.addNamedEntityText('namaPraktikum', 'Pemrograman Lanjut', ['id'], ['proglan', 'java', 'pbo', 'pemrograman lanjut'])
+        manager.addNamedEntityText('namaPraktikum', 'Pemrograman Web', ['id'], ['progweb', 'Pemrograman Web'])
+        manager.addNamedEntityText('namaPraktikum', 'Sistem Operasi', ['id'], ['SO', 'sistem operasi', 'OS'])
+        manager.addNamedEntityText('namaPraktikum', 'Manajemen Data dan Informasi', ['id'], ['mandatin', 'database', 'manajemen data dan informasi'])
+        manager.addNamedEntityText('namaPraktikum', 'Manajemen Jaringan Komputer', ['id'], ['manjarkom', 'mjk', 'manajemen jarkom'])
+        manager.addNamedEntityText('namaPraktikum', 'Sistem Jaringan Komputer', ['id'], ['sistem jarkom', 'sjk'])
+        manager.addNamedEntityText('namaPraktikum', 'Rangkaian Logika', ['id'], ['rl', 'RL', 'rangkaian logika'])
+        manager.addNamedEntityText('namaPraktikum', 'Mikroprosessor', ['id'], ['mikro', 'hardware'])
+        manager.addNamedEntityText('namaPraktikum', 'Sistem Digital', ['id'], ['sisdig', 'sistem digital'])
+        manager.addNamedEntityText('namaPraktikum', 'Komputer Grafik dan Visualisasi Data', ['id'], ['kompgraf', 'komputer grafik'])
+        manager.addNamedEntityText('namaPraktikum', 'Pengolahan Citra Digital', ['id'], ['KCBV', 'PCD', 'pengolahan citra'])
 
         // possible questions
 
@@ -337,51 +353,37 @@ class TrainingController {
 
         // Jadwal Kuliah
         // =============
-        manager.addDocument('id','%kataJadwal% kuliah hari ini', 'cariJadwalKuliah')
+        manager.addDocument('id', '%kataJadwal% kuliah hari ini', 'cariJadwalKuliah')
         manager.addDocument('id', 'carikan %kataJadwal% kuliah hari', 'cariJadwalKuliah')
-        manager.addDocument('id','tolong %kataJadwal% kuliah hari', 'cariJadwalKuliah')
-        manager.addDocument('id','carikan %kataJadwal% kuliah hari ini', 'cariJadwalKuliah')
-        manager.addDocument('id','%kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
-        manager.addDocument('id','carikan %kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
-        manager.addDocument('id','tolong %kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
-        manager.addDocument('id','carikan %kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
+        manager.addDocument('id', 'tolong %kataJadwal% kuliah hari', 'cariJadwalKuliah')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah hari ini', 'cariJadwalKuliah')
+        manager.addDocument('id', '%kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
+        manager.addDocument('id', 'tolong %kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah sekarang', 'cariJadwalKuliah')
 
-        manager.addDocument('id','%kataJadwal% kuliah hari %hari%','cariJadwalKuliahHari')
-        manager.addDocument('id','carikan %kataJadwal% kuliah hari %hari%','cariJadwalKuliahHari')
-        manager.addDocument('id','tolong %kataJadwal% kuliah hari %hari%','cariJadwalKuliahHari')
-        manager.addDocument('id','carikan %kataJadwal% kuliah hari %hari%','cariJadwalKuliahHari')
+        manager.addDocument('id', '%kataJadwal% kuliah hari %hari%', 'cariJadwalKuliahHari')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah hari %hari%', 'cariJadwalKuliahHari')
+        manager.addDocument('id', 'tolong %kataJadwal% kuliah hari %hari%', 'cariJadwalKuliahHari')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah hari %hari%', 'cariJadwalKuliahHari')
         // End Jadwal Kuliah
         // =================
 
         // Jadwal Seminar TA
         // =================
-        manager.addDocument('id','jadwal seminar %tugasAkhir%', 'cariJadwalSeminarTA')
-        manager.addDocument('id','informasi seminar %tugasAkhir%', 'cariJadwalSeminarTA')
-        manager.addDocument('id','tanggal seminar %tugasAkhir%', 'cariJadwalSeminarTA')
-        manager.addDocument('id','kapan jadwal seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
-        manager.addDocument('id','kapan pelaksanaan seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
-        manager.addDocument('id','tanggal berapa jadwal seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
-        manager.addDocument('id','kapan tanggal pelaksanaan seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
-        manager.addDocument('id','pelaksanaan seminar %tugasAkhir%', 'cariJadwalSeminarTA')
-        manager.addDocument('id','tanggal berapa seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'jadwal seminar %tugasAkhir%', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'informasi seminar %tugasAkhir%', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'tanggal seminar %tugasAkhir%', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'kapan jadwal seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'kapan pelaksanaan seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'tanggal berapa jadwal seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'kapan tanggal pelaksanaan seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'pelaksanaan seminar %tugasAkhir%', 'cariJadwalSeminarTA')
+        manager.addDocument('id', 'tanggal berapa seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
         manager.addDocument('id', 'kapan seminar %tugasAkhir% ?', 'cariJadwalSeminarTA')
         manager.addDocument('id', 'kapan seminar %tugasAkhir%', 'cariJadwalSeminarTA')
         manager.addDocument('id', 'seminar %tugasAkhir% kapan ?', 'cariJadwalSeminarTA')
         manager.addDocument('id', 'seminar %tugasAkhir% kapan', 'cariJadwalSeminarTA')
-
-        // manager.addDocument('id', 'jadwal seminar %tugasAkhir% %nbi%', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'informasi seminar %tugasAkhir% %nbi%', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'tanggal seminar %tugasAkhir% %nbi%', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'kapan jadwal seminar %tugasAkhir% %nbi% ?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'kapan pelaksanaan seminar %tugasAkhir% %nbi% ?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'tanggal berapa jadwal seminar %tugasAkhir% %nbi% ?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'kapan tanggal pelaksanaan seminar %tugasAkhir% %nbi% ?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'pelaksanaan seminar %tugasAkhir% %nbi%', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'tanggal berapa seminar %tugasAkhir% %nbi%?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'kapan seminar %tugasAkhir% %nbi% ?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'kapan seminar %tugasAkhir% %nbi%', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'seminar %tugasAkhir% %nbi% kapan ?', 'cariJadwalSeminarTANbi')
-        // manager.addDocument('id', 'seminar %tugasAkhir% %nbi% kapan', 'cariJadwalSeminarTANbi')
 
         manager.addDocument('id', 'jadwal seminar %tugasAkhir% nbi', 'cariJadwalSeminarTANbi')
         manager.addDocument('id', 'informasi seminar %tugasAkhir% nbi', 'cariJadwalSeminarTANbi')
@@ -416,46 +418,86 @@ class TrainingController {
         manager.addDocument('id', 'ujian %tugasAkhir% kapan ?', 'cariJadwalUjianTA')
         manager.addDocument('id', 'ujian %tugasAkhir% kapan', 'cariJadwalUjianTA')
 
-        manager.addDocument('id', 'jadwal ujian %tugasAkhir% %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'informasi ujian %tugasAkhir% %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'tanggal ujian %tugasAkhir% %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan jadwal ujian %tugasAkhir% %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan pelaksanaan ujian %tugasAkhir% %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'tanggal berapa jadwal ujian %tugasAkhir% %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan tanggal pelaksanaan ujian %tugasAkhir% %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'pelaksanaan ujian %tugasAkhir% %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'tanggal berapa ujian %tugasAkhir% %nbi%?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan ujian %tugasAkhir% %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan ujian %tugasAkhir% %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'ujian %tugasAkhir% %nbi% kapan ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'ujian %tugasAkhir% %nbi% kapan', 'cariJadwalUjianTANbi')
-
-        manager.addDocument('id', 'jadwal ujian %tugasAkhir% nbi %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'informasi ujian %tugasAkhir% nbi %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'tanggal ujian %tugasAkhir% nbi %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan jadwal ujian %tugasAkhir% nbi %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan pelaksanaan ujian %tugasAkhir% nbi %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'tanggal berapa jadwal ujian %tugasAkhir% nbi %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan tanggal pelaksanaan ujian %tugasAkhir% nbi %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'pelaksanaan ujian %tugasAkhir% nbi %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'tanggal berapa ujian %tugasAkhir% nbi %nbi%?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan ujian %tugasAkhir% nbi %nbi% ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'kapan ujian %tugasAkhir% nbi %nbi%', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'ujian %tugasAkhir% nbi %nbi% kapan ?', 'cariJadwalUjianTANbi')
-        manager.addDocument('id', 'ujian %tugasAkhir% nbi %nbi% kapan', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'jadwal ujian %tugasAkhir% nbi', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'informasi ujian %tugasAkhir% nbi', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'tanggal ujian %tugasAkhir% nbi', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'kapan jadwal ujian %tugasAkhir% nbi ?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'kapan pelaksanaan ujian %tugasAkhir% nbi ?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'tanggal berapa jadwal ujian %tugasAkhir% nbi ?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'kapan tanggal pelaksanaan ujian %tugasAkhir% nbi ?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'pelaksanaan ujian %tugasAkhir% nbi', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'tanggal berapa ujian %tugasAkhir% nbi?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'kapan ujian %tugasAkhir% nbi ?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'kapan ujian %tugasAkhir% nbi', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'ujian %tugasAkhir% nbi kapan ?', 'cariJadwalUjianTANbi')
+        manager.addDocument('id', 'ujian %tugasAkhir% nbi kapan', 'cariJadwalUjianTANbi')
 
         // End Ujian Seminar TA
         // ====================
 
+        // Jadwal Kerja Praktek
+        // =================
+        manager.addDocument('id', 'jadwal sidang %kerjaPraktek%', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'informasi sidang %kerjaPraktek%', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'tanggal sidang %kerjaPraktek%', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'kapan jadwal sidang %kerjaPraktek% ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'kapan pelaksanaan sidang %kerjaPraktek% ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'tanggal berapa jadwal sidang %kerjaPraktek% ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'kapan tanggal pelaksanaan sidang %kerjaPraktek% ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'pelaksanaan sidang %kerjaPraktek%', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'tanggal berapa sidang %kerjaPraktek% ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'kapan sidang %kerjaPraktek% ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'kapan sidang %kerjaPraktek%', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'sidang %kerjaPraktek% kapan ?', 'cariJadwalSidangKerjaPraktek')
+        manager.addDocument('id', 'sidang %kerjaPraktek% kapan', 'cariJadwalSidangKerjaPraktek')
+
+        manager.addDocument('id', 'jadwal sidang %kerjaPraktek% nbi', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'informasi sidang %kerjaPraktek% nbi', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'tanggal sidang %kerjaPraktek% nbi', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'kapan jadwal sidang %kerjaPraktek% nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'kapan pelaksanaan sidang %kerjaPraktek% nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'tanggal berapa jadwal sidang %kerjaPraktek% nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'kapan tanggal pelaksanaan sidang %kerjaPraktek% nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'pelaksanaan sidang %kerjaPraktek% nbi', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'tanggal berapa sidang %kerjaPraktek% nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'kapan sidang %kerjaPraktek% nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'kapan sidang %kerjaPraktek% nbi', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'sidang %kerjaPraktek% kapan nbi ?', 'cariJadwalSidangKerjaPraktekNbi')
+        manager.addDocument('id', 'sidang %kerjaPraktek% kapan nbi', 'cariJadwalSidangKerjaPraktekNbi')
+
+        // jadwal praktikum nama hari
+        manager.addDocument('id', 'jadwal praktikum %namaPraktikum% %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'carikan jadwal praktikum %namaPraktikum% %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'tolong jadwal praktikum %namaPraktikum% %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'carikan jadwal praktikum %namaPraktikum% %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'jadwal praktikum %namaPraktikum% hari %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'carikan jadwal praktikum %namaPraktikum% hari %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'tolong jadwal praktikum %namaPraktikum% hari %hari%', 'cariPraktikumNamaHari')
+        manager.addDocument('id', 'carikan jadwal praktikum %namaPraktikum% hari %hari%', 'cariPraktikumNamaHari')
+
+        // jadwal praktikum nama
+        manager.addDocument('id', 'jadwal praktikum %namaPraktikum%', 'cariPraktikumNama')
+        manager.addDocument('id', 'jadwal praktikum %namaPraktikum% hari ini', 'cariPraktikumNama')
+        manager.addDocument('id', 'jadwal praktikum %namaPraktikum% sekarang', 'cariPraktikumNama')
+        manager.addDocument('id', 'tolong jadwal praktikum %namaPraktikum% sekarang', 'cariPraktikumNama')
+
+        // jadwal praktikum hari
+        // manager.addDocument('id', 'jadwal praktikum hari %hari%', 'cariPraktikumHari')
+        // manager.addDocument('id', 'carikan jadwal praktikum hari %hari%', 'cariPraktikumHari')
+
+        // jadwal praktikum sekarang
+        // manager.addDocument('id', 'jadwal praktikum hari ini', 'cariPraktikum')
+        // manager.addDocument('id', 'carikan jadwal praktikum hari', 'cariPraktikum')
 
         // informasi lainnya
-        manager.addDocument('id','informasi pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
-        manager.addDocument('id','pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
-        manager.addDocument('id','kapan pendaftaran seminar %tugasAkhir% ?', 'cariJadwalPendaftaranTA')
-        manager.addDocument('id','tanggal berapa pendaftaran seminar %tugasAkhir% ?', 'cariJadwalPendaftaranTA')
-        manager.addDocument('id','kapan tanggal pendaftaran seminar %tugasAkhir% ?', 'cariJadwalPendaftaranTA')
-        manager.addDocument('id','tanggal berapa pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
-        manager.addDocument('id','kapan tanggal pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
+
+        manager.addDocument('id', 'informasi pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
+        manager.addDocument('id', 'pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
+        manager.addDocument('id', 'kapan pendaftaran seminar %tugasAkhir% ?', 'cariJadwalPendaftaranTA')
+        manager.addDocument('id', 'tanggal berapa pendaftaran seminar %tugasAkhir% ?', 'cariJadwalPendaftaranTA')
+        manager.addDocument('id', 'kapan tanggal pendaftaran seminar %tugasAkhir% ?', 'cariJadwalPendaftaranTA')
+        manager.addDocument('id', 'tanggal berapa pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
+        manager.addDocument('id', 'kapan tanggal pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranTA')
 
         // general questions
         // =================
@@ -532,10 +574,10 @@ class TrainingController {
         manager.addAnswer('id', 'cariJadwalKuliahHari', 'Hari {{hari}} jadwal kuliahnya adalah')
 
         // jadwal seminar TA
-        manager.addAnswer('id','cariJadwalSeminarTA','Jadwal Seminar {{tugasAkhir}} adalah')
-        manager.addAnswer('id','cariJadwalSeminarTA','Seminar {{tugasAkhir}} dilaksanakan pada')
-        manager.addAnswer('id','cariJadwalSeminarTA','Seminar {{tugasAkhir}} akan dilaksanakan pada')
-        manager.addAnswer('id','cariJadwalSeminarTA','Seminar {{tugasAkhir}} dijadwalkan pada')
+        manager.addAnswer('id', 'cariJadwalSeminarTA', 'Jadwal Seminar {{tugasAkhir}} adalah')
+        manager.addAnswer('id', 'cariJadwalSeminarTA', 'Seminar {{tugasAkhir}} dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalSeminarTA', 'Seminar {{tugasAkhir}} akan dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalSeminarTA', 'Seminar {{tugasAkhir}} dijadwalkan pada')
 
         manager.addAnswer('id', 'cariJadwalSeminarTANbi', 'Jadwal Seminar {{tugasAkhir}} NBI {{nbi}} adalah')
         manager.addAnswer('id', 'cariJadwalSeminarTANbi', 'Seminar {{tugasAkhir}}  NBI {{nbi}} dilaksanakan pada')
@@ -553,12 +595,32 @@ class TrainingController {
         manager.addAnswer('id', 'cariJadwalUjianTANbi', 'Ujian {{tugasAkhir}} NBI {{nbi}} akan dilaksanakan pada')
         manager.addAnswer('id', 'cariJadwalUjianTANbi', 'Ujian {{tugasAkhir}} NBI {{nbi}} dijadwalkan pada')
 
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktek', 'Jadwal Sidang {{kerjaPraktek}} adalah')
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktek', 'Sidang {{kerjaPraktek}} dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktek', 'Sidang {{kerjaPraktek}} akan dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktek', 'Sidang {{kerjaPraktek}} dijadwalkan pada')
+
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktekNbi', 'Jadwal Sidang {{kerjaPraktek}} nbi {{nbi}} adalah')
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktekNbi', 'Sidang {{kerjaPraktek}} nbi {{nbi}} dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktekNbi', 'Sidang {{kerjaPraktek}} nbi {{nbi}} akan dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalSidangKerjaPraktekNbi', 'Sidang {{kerjaPraktek}} nbi {{nbi}} dijadwalkan pada')
+
+        manager.addAnswer('id', 'cariPraktikum', 'Jadwal praktikum hari ini adalah ')
+        manager.addAnswer('id', 'cariPraktikum', 'praktikum hari ini adalah ')
+        manager.addAnswer('id', 'cariPraktikum', 'Jadwal praktikum sekarang adalah ')
+        manager.addAnswer('id', 'cariPraktikumHari', 'Praktikum hari {{hari}} adalah')
+        manager.addAnswer('id', 'cariPraktikumHari', 'Jadwal Praktikum hari {{hari}} adalah')
+        manager.addAnswer('id', 'cariPraktikumNama', 'Jadwal Praktikum {{namaPraktikum}} adalah')
+        manager.addAnswer('id', 'cariPraktikumNama', 'Praktikum {{namaPraktikum}} sekarang adalah')
+        manager.addAnswer('id', 'cariPraktikumNamaHari', 'Praktikum {{namaPraktikum}} hari {{hari}} adalah')
+        manager.addAnswer('id', 'cariPraktikumNamaHari', 'Jadwal Praktikum {{namaPraktikum}} hari {{hari}} adalah')
 
         // Informasi Lainnya
         manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Seminar {{tugasAkhir}} pada')
         manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Seminar {{tugasAkhir}} dilaksanakan pada')
         manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Seminar {{tugasAkhir}} akan dilaksanakan pada')
         manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Seminar {{tugasAkhir}} dijadwalkan pada')
+
 
         await manager.train()
         manager.save('source/model.nlp')

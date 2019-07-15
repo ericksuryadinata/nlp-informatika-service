@@ -7,6 +7,13 @@ class Krss extends Model {
   static get table() {
     return 'krs'
   }
+  static get createdAtColumn() {
+    return null
+  }
+
+  static get updatedAtColumn() {
+    return null
+  }
 }
 
 module.exports = Krss

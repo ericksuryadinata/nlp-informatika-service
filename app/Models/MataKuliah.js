@@ -7,6 +7,13 @@ class MataKuliah extends Model {
   static get table() {
     return 'mata_kuliah'
   }
+  static get createdAtColumn() {
+    return null
+  }
+
+  static get updatedAtColumn() {
+    return null
+  }
 }
 
 module.exports = MataKuliah

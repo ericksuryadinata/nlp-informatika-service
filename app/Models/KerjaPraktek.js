@@ -7,6 +7,13 @@ class KerjaPraktek extends Model {
   static get table() {
     return 'kerja_praktek'
   }
+  static get createdAtColumn() {
+    return null
+  }
+
+  static get updatedAtColumn() {
+    return null
+  }
 }
 
 module.exports = KerjaPraktek

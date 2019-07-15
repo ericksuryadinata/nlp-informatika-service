@@ -7,6 +7,13 @@ class InformasiSeminarTa extends Model {
   static get table() {
     return 'informasi_seminar_ta'
   }
+  static get createdAtColumn() {
+    return null
+  }
+
+  static get updatedAtColumn() {
+    return null
+  }
 }
 
 module.exports = InformasiSeminarTa
