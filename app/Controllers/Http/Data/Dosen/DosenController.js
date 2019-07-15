@@ -20,13 +20,12 @@ class DosenController {
   }){
     const req = request.all()
     try {
-      const dosenPhone = await Dosen.query().where('phone_number', req.phone_number).first()
-      if (dosenPhone) {
-        dosenPhone.latitude = req.latitude
-        dosenPhone.longitude = req.longitude
-        dosenPhone.geocode = req.geocode
-        dosenPhone.lat_long_timestamp = req.timestamp
-        dosenPhone.imei = req.imei
+      const dosen = await Dosen.query().where('nip', req.nip).first()
+      if (dosen) {
+          const lokasiDosen = new LokasiDosen()
+          return response.json({
+            'status': 'success'
+          })
         await dosenPhone.save()
         return response.json({
           'status': 'success'
