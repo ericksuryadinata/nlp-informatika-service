@@ -24,8 +24,10 @@ class ExtractionController {
         const manager = new NlpManager()
         const context = new ConversationContext()
         manager.load('source/model.nlp')
-        const process = await manager.process('id', req.sentence)
-        
+        let kata = req.sentence
+        const number = kata.substring(kata.search(/(?<=\s|^)\d{10}|(?<=\s|^)\d{9}/g))
+
+        const process = await manager.process('id', kata)
         return response.json({
           'status': 'success',
           'result': process
