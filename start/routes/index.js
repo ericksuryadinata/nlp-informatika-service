@@ -21,7 +21,7 @@ const apiv1Group = (group) => {
   return group
 }
 
-Route.get('/',() => {
+Route.get('/', () => {
   return 'hello from nlp service'
 })
 

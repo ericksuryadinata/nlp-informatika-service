@@ -5,8 +5,7 @@ const LokasiDosen = use('App/Models/LokasiDosen')
 const Moment = use('moment')
 
 class DosenController {
-
-  async random({
+  async random ({
     request,
     response
   }) {
@@ -14,7 +13,7 @@ class DosenController {
     return req.nidn
   }
 
-  async android({
+  async android ({
     request,
     response
   }) {
@@ -42,10 +41,9 @@ class DosenController {
         'error': error.message
       })
     }
-
   }
 
-  async rfid({
+  async rfid ({
     request,
     response
   }) {
@@ -71,7 +69,6 @@ class DosenController {
         'error': error.message
       })
     }
-
   }
 }
 

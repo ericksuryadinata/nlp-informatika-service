@@ -8,18 +8,16 @@ const {
   validate
 } = use('Validator')
 class TrainingController {
-
   /**
    * Training data
    * @method POST
    * @param {request} request
    * @param {response} response
    */
-  async index({
+  async index ({
     request,
     response
   }) {
-
     const req = request.all()
     const rules = {
       name: 'required',
@@ -31,7 +29,6 @@ class TrainingController {
       password: req.password
     }, rules)
     if (!validation.fails()) {
-
       if (req.name === 'erick' && req.password === 'erick') {
         const manager = new NlpManager({
           languages: ['id'],
@@ -589,7 +586,6 @@ class TrainingController {
         manager.addDocument('id', 'tanggal berapa pendaftaran %kerjaPraktek%', 'cariJadwalPendaftaranKerjaPraktek')
         manager.addDocument('id', 'kapan tanggal pendaftaran %kerjaPraktek%', 'cariJadwalPendaftaranKerjaPraktek')
 
-
         manager.addDocument('id', 'syarat pendaftaran %tugasAkhir%', 'cariSyaratTA')
         manager.addDocument('id', 'apa saja syarat pendaftaran %tugasAkhir%?', 'cariSyaratTA')
         manager.addDocument('id', 'pendaftaran %tugasAkhir% syaratnya', 'cariSyaratTA')
@@ -645,11 +641,11 @@ class TrainingController {
         manager.addAnswer('id', 'cariLokasiDosenPerempuan', 'bu {{subjekDosen}} saat ini ada di')
 
         // jadwal dosen
-        manager.addAnswer('id', 'cariJadwalDosenGeneral', 'jadwal {{subjekDosen}} adalah')
-        manager.addAnswer('id', 'cariJadwalDosenGeneral', 'jadwal {{subjekDosen}} sekarang adalah')
-        manager.addAnswer('id', 'cariJadwalDosenGeneral', '{{subjekDosen}} mengajar di ')
-        manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'jadwal {{subjekDosen}} hari {{hari}} adalah')
-        manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'hari {{hari}} {subjekDosen}} mengajar di ')
+        manager.addAnswer('id', 'cariJadwalDosenGeneral', 'jadwal {{subjekGender}} {{subjekDosen}} adalah')
+        manager.addAnswer('id', 'cariJadwalDosenGeneral', 'jadwal {{subjekGender}} {{subjekDosen}} sekarang adalah')
+        manager.addAnswer('id', 'cariJadwalDosenGeneral', '{{subjekGender}} {{subjekDosen}} mengajar di ')
+        manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'jadwal {{subjekGender}} {{subjekDosen}} hari {{hari}} adalah')
+        manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'hari {{hari}} {{subjekGender}} {subjekDosen}} mengajar di ')
 
         manager.addAnswer('id', 'cariJadwalDosenLaki', 'jadwal pak {{subjekDosen}} adalah')
         manager.addAnswer('id', 'cariJadwalDosenLaki', 'jadwal pak {{subjekDosen}} sekarang adalah')
@@ -772,7 +768,6 @@ class TrainingController {
           'message': 'username atau password salah'
         })
       }
-
     } else {
       return response.status(401).json({
         'status': 'failed',

@@ -4,14 +4,14 @@
 const Model = use('Model')
 
 class KelasLaboratorium extends Model {
-  static get table() {
+  static get table () {
     return 'kelas_laboratorium'
   }
-  static get createdAtColumn() {
+  static get createdAtColumn () {
     return null
   }
 
-  static get updatedAtColumn() {
+  static get updatedAtColumn () {
     return null
   }
 }

@@ -4,14 +4,14 @@
 const Model = use('Model')
 
 class InformasiUjianTa extends Model {
-  static get table() {
+  static get table () {
     return 'informasi_ujian_ta'
   }
-  static get createdAtColumn() {
+  static get createdAtColumn () {
     return null
   }
 
-  static get updatedAtColumn() {
+  static get updatedAtColumn () {
     return null
   }
 }
