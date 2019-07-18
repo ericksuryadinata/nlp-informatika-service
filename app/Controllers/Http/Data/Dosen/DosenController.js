@@ -80,26 +80,20 @@ class DosenController {
     response
   }){
     const req = request.all()
-    return response.json({
-      nip: req.nip,
-      nama: req.nama,
-      telp: req.telp
-    })
     // request.nip, request.nama, request.telp
     try {
-      // const dosen = await Dosen.query().where('nip', request.nip).first()
-      // if (dosen == null) {
-      //   return response.json({
-      //     'status': 'failed',
-      //     'message': 'dosen tidak ada'
-      //   })
-      // }
-      // const client = new Twilio(AccountSID, AuthToken)
-      // client.messages.create({
-      //   body: "test",
-      //   to: "+628994443444",
-      //   from: "+12182170845"
-      // }).then((message) => console.log(message.sid))
+      const dosen = await Dosen.query().where('nip', request.nip).first()
+      if (dosen == null) {
+        return response.json({
+          'status': 'failed',
+          'message': 'dosen tidak ada'
+        })
+      }
+
+      return response.json({
+        'status' : 'success',
+        'message' : 'dosen ada'
+      })
 
     } catch (error) {
       return response.status(500).json({
