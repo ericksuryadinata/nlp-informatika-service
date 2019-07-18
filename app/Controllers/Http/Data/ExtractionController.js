@@ -89,9 +89,9 @@ class ExtractionController {
         }
         console.log(entities)
         // find the intent for next process
-        const intent = process.intent
+        // const intent = process.intent
 
-        result = await this.getResponse(intent, entities, process.srcAnswer, process.answer)
+        // result = await this.getResponse(intent, entities, process.srcAnswer, process.answer)
 
         return response.json({
           'status': 'success',

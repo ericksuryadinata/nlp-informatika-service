@@ -70,6 +70,13 @@ class DosenController {
       })
     }
   }
+
+  async register({
+    request,
+    response
+  }){
+
+  }
 }
 
 module.exports = DosenController
