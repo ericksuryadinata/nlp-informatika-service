@@ -733,19 +733,19 @@ class TrainingController {
         manager.addAnswer('id', 'cariJadwalDosenGeneral', 'jadwal {{subjekGender}} {{subjekDosen}} sekarang adalah')
         manager.addAnswer('id', 'cariJadwalDosenGeneral', '{{subjekGender}} {{subjekDosen}} mengajar di ')
         manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'jadwal {{subjekGender}} {{subjekDosen}} hari {{hari}} adalah')
-        manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'hari {{hari}} {{subjekGender}} {subjekDosen}} mengajar di ')
+        manager.addAnswer('id', 'cariJadwalDosenGeneralHari', 'hari {{hari}} {{subjekGender}} {{subjekDosen}} mengajar di ')
 
         manager.addAnswer('id', 'cariJadwalDosenLaki', 'jadwal pak {{subjekDosen}} adalah')
         manager.addAnswer('id', 'cariJadwalDosenLaki', 'jadwal pak {{subjekDosen}} sekarang adalah')
         manager.addAnswer('id', 'cariJadwalDosenLaki', 'pak {{subjekDosen}} mengajar di ')
         manager.addAnswer('id', 'cariJadwalDosenLakiHari', 'jadwal pak {{subjekDosen}} hari {{hari}} adalah')
-        manager.addAnswer('id', 'cariJadwalDosenLakiHari', 'hari {{hari}} pak {subjekDosen}} mengajar di ')
+        manager.addAnswer('id', 'cariJadwalDosenLakiHari', 'hari {{hari}} pak {{subjekDosen}} mengajar di ')
 
         manager.addAnswer('id', 'cariJadwalDosenPerempuan', 'jadwal bu {{subjekDosen}} adalah')
         manager.addAnswer('id', 'cariJadwalDosenPerempuan', 'jadwal bu {{subjekDosen}} sekarang adalah')
         manager.addAnswer('id', 'cariJadwalDosenPerempuan', 'bu {{subjekDosen}} mengajar di ')
         manager.addAnswer('id', 'cariJadwalDosenPerempuanHari', 'jadwal bu {{subjekDosen}} hari {{hari}} adalah')
-        manager.addAnswer('id', 'cariJadwalDosenPerempuanHari', 'hari {{hari}} bu {subjekDosen}} mengajar di ')
+        manager.addAnswer('id', 'cariJadwalDosenPerempuanHari', 'hari {{hari}} bu {{subjekDosen}} mengajar di ')
 
         // nomor telepon / WA dosen
         manager.addAnswer('id', 'cariNomorDosenGeneral', 'nomor {{kataTelepon}} {{subjekDosen}} adalah')
@@ -760,6 +760,14 @@ class TrainingController {
         manager.addAnswer('id', 'cariJadwalKuliah', 'Jadwal kuliah hari ini adalah')
         manager.addAnswer('id', 'cariJadwalKuliah', 'kuliah sekarang adalah')
         manager.addAnswer('id', 'cariJadwalKuliah', 'Hari ini jadwal kuliahnya adalah')
+        manager.addAnswer('id', 'cariJadwalKuliahNama', 'Jadwal kuliah {{mataKuliah}} adalah')
+        manager.addAnswer('id', 'cariJadwalKuliahNama', 'Jadwal kuliah {{mataKuliah}} adalah')
+        manager.addAnswer('id', 'cariJadwalKuliahNama', 'kuliah {{mataKuliah}} jadwalnya adalah')
+
+        manager.addAnswer('id', 'cariJadwalKuliahNamaNbi', 'Jadwal kuliah {{mataKuliah}} nbi {{nbi}} adalah')
+        manager.addAnswer('id', 'cariJadwalKuliahNamaNbi', 'Jadwal kuliah {{mataKuliah}} nbi {{nbi}} adalah')
+        manager.addAnswer('id', 'cariJadwalKuliahNamaNbi', 'kuliah {{mataKuliah}} nbi {{nbi}}  jadwalnya adalah')
+
         manager.addAnswer('id', 'cariJadwalKuliahHari', 'Jadwal kuliah hari {{hari}} adalah')
         manager.addAnswer('id', 'cariJadwalKuliahHari', 'kuliah hari {{hari}} adalah')
         manager.addAnswer('id', 'cariJadwalKuliahHari', 'Hari {{hari}} jadwal kuliahnya adalah')

@@ -26,6 +26,7 @@ const Moment = use('moment')
 
 class ExtractionController {
   constructor () {
+    Moment.locale('id')
     this.Handler = new defaultHandler()
   }
 
@@ -87,15 +88,15 @@ class ExtractionController {
             'result': result
           })
         }
-        console.log(entities)
+        // console.log(entities)
         // find the intent for next process
-        // const intent = process.intent
+        const intent = process.intent
 
-        // result = await this.getResponse(intent, entities, process.srcAnswer, process.answer)
-
+        result = await this.getResponse(intent, entities, process.srcAnswer, process.answer)
         return response.json({
           'status': 'success',
-          'result': process
+          'result': result,
+          'process' : process
         })
       } catch (error) {
         return response.status(500).json({
@@ -122,25 +123,67 @@ class ExtractionController {
     // we know the intent
     // for god sake, this method is not a best practice
     // the best pratice is, looking on table, and create a dinamic query about the intent and entities
-    let result = ''
+    let result = '', lokasi
 
     if (intent === 'cariLokasiDosenGeneral') {
-      const dosen = await Dosen.query().whereRaw('nama like %?%', [entities.subjekDosen])
+      const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
       const lokasiDosen =  await LokasiDosen.query().where('nip', dosen.nip).orderBy('timestamp', 'desc').first()
+      if(lokasiDosen == null){
+        result = entities.subjekDosen + " saat ini tidak diketahui keberadaannya"
+      }else{
+        lokasi = lokasiDosen.location_rfid
+        if(lokasi == null){
+          lokasi = lokasiDosen.latitude + " " + lokasiDosen.longitude + ", " + lokasiDosen.geocode
+        }
+        result = answer + " " + lokasi
+      }
     }
+
+
     if (intent === 'cariJadwalDosenGeneral') {
-      const dosen = await Dosen.query().whereRaw('nama like %?%', [entities.subjekDosen])
+      const now = Moment().format('dddd')
+      const hari = await Hari.query().where('nama',now.toUpperCase()).first()
+      const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
+      let jadwal = await Krss.query().where('nip', dosen.nip).where('hari_kode', 3).groupBy('kelas').fetch()
+      if(jadwal == null){
+        result = entities.subjekDosen + " tidak sedang mengajar"
+      }else{
+        jadwal = jadwal.toJSON()
+        for (const element of jadwal) {
+          let jam_kode = element.jam.split("-")
+          let mataKuliah = await MataKuliah.query().where('kode', element.mata_kuliah_kode).first()
+          let mengajar_jam_ke = ""
+          let jam = await Jam.query().where('kode', jam_kode[0]).first()
+          mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+          jam = await Jam.query().where('kode', jam_kode[1]).first()
+          mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+          result += mataKuliah.nama +  " Kelas " + element.kelas + " Ruang " + element.ruang + " Jam : " + mengajar_jam_ke + "\r\n"
+        }
+      }
     }
+
+
     if (intent === 'cariJadwalDosenGeneralHari') {
-      const dosen = await Dosen.query().whereRaw('nama like %?%', [entities.subjekDosen])
+      const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
     }
     if (intent === 'cariNomorDosenGeneral') {
-      const dosen = await Dosen.query().whereRaw('nama like %?%', [entities.subjekDosen])
+      const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
     }
     if (intent === 'cariJadwalKuliah') {
       const now = Moment().format('Y-MM-DD HH:mm:ss')
       const krs = await Krss.query().where()
     }
+
+    if (intent === 'cariJadwalKuliahNama') {
+      const now = Moment().format('Y-MM-DD HH:mm:ss')
+      const krs = await Krss.query().where()
+    }
+
+    if (intent === 'cariJadwalKuliahNamaNbi') {
+      const now = Moment().format('Y-MM-DD HH:mm:ss')
+      const krs = await Krss.query().where()
+    }
+
     if (intent === 'cariJadwalKuliahNbi') {
 
     }
@@ -207,6 +250,12 @@ class ExtractionController {
     if (intent === 'cariSyaratYudisium') {
 
     }
+
+    if(result == ''){
+      result = 'Menu masih belum diaktifkan'
+    }
+
+    return result;
   }
 }
 
