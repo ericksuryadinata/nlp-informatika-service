@@ -144,7 +144,7 @@ class ExtractionController {
       const now = Moment().format('dddd')
       const hari = await Hari.query().where('nama',now.toUpperCase()).first()
       const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
-      let jadwal = await Krss.query().where('nip', dosen.nip).where('hari_kode', 3).groupBy('kelas').fetch()
+      let jadwal = await Krss.query().where('nip', dosen.nip).where('hari_kode', 3).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
       if(jadwal == null){
         result = entities.subjekDosen + " tidak sedang mengajar"
       }else{

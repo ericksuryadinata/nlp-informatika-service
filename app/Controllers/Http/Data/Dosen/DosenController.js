@@ -3,6 +3,10 @@
 const Dosen = use('App/Models/Dosen')
 const LokasiDosen = use('App/Models/LokasiDosen')
 const Moment = use('moment')
+const Twilio = use('twilio')
+const Env = use('Env')
+const AccountSID = Env.get('TWILIO_ACCOUNT_SID')
+const AuthToken = Env.get('TWILIO_AUTH_TOKEN')
 
 class DosenController {
   async random ({
@@ -75,6 +79,29 @@ class DosenController {
     request,
     response
   }){
+    const req = request.all()
+    // request.nip, request.nama, request.telp
+    try {
+      // const dosen = await Dosen.query().where('nip', request.nip).first()
+      // if (dosen == null) {
+      //   return response.json({
+      //     'status': 'failed',
+      //     'message': 'dosen tidak ada'
+      //   })
+      // }
+      const client = new Twilio(AccountSID, AuthToken)
+      client.messages.create({
+        body: "test",
+        to: "+628994443444",
+        from: "+12182170845"
+      }).then((message) => console.log(message.sid))
+
+    } catch (error) {
+      return response.status(500).json({
+        'status': 'failed',
+        'error': error.message
+      })
+    }
 
   }
 }
