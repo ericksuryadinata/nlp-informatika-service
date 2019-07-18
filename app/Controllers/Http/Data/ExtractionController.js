@@ -166,6 +166,7 @@ class ExtractionController {
     if (intent === 'cariJadwalDosenGeneralHari') {
       const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
     }
+
     if (intent === 'cariNomorDosenGeneral') {
       const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
       if(dosen.nomor_telepon.indexOf('xxx') === -1){
@@ -174,6 +175,7 @@ class ExtractionController {
         result = entities.subjekDosen + " masih belum mempunyai kontak"
       }
     }
+    
     if (intent === 'cariJadwalKuliah') {
       const now = Moment().format('Y-MM-DD HH:mm:ss')
       const krs = await Krss.query().where()
