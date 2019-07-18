@@ -168,6 +168,11 @@ class ExtractionController {
     }
     if (intent === 'cariNomorDosenGeneral') {
       const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
+      if(dosen.nomor_telepon.indexOf('xxx') === -1){
+        result = answer + " " + dosen.nomor_telepon
+      }else{
+        result = entities.subjekDosen + " masih belum mempunyai kontak"
+      }
     }
     if (intent === 'cariJadwalKuliah') {
       const now = Moment().format('Y-MM-DD HH:mm:ss')
