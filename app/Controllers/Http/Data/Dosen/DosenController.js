@@ -82,7 +82,7 @@ class DosenController {
     const req = request.all()
     // request.nip, request.nama, request.telp
     try {
-      const dosen = await Dosen.query().where('nip', request.nip).first()
+      const dosen = await Dosen.query().where('nip', req.nip).first()
       if (dosen == null) {
         return response.json({
           'status': 'failed',
