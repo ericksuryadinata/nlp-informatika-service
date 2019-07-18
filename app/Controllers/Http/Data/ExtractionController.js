@@ -445,49 +445,128 @@ class ExtractionController {
           year = year - 1
         }
         const praktikumLaboratorium = await PraktikumLaboratorium.query().whereRaw('nama like ?', entities.namaPraktikum).first()
-        let jadwalPraktikum = await KelasLaboratorium.query().where('praktikum_laboratorium_kode', praktikumLaboratorium.kode).where('tahun_ajaran',year).first()
-        if (jadwalPraktikum == null) {
+        let kelasLaboratorium = await KelasLaboratorium.query().where('praktikum_laboratorium_kode', praktikumLaboratorium.kode).where(function () {
+          this.where('tahun_ajaran', year).orWhere('tahun_ajaran', year + 1)
+        }).fetch()
+        if (kelasLaboratorium == null) {
           result = 'Tidak ada jadwal praktikum ' + entities.namaPraktikum
         } else {
-          result = ''
+          kelasLaboratorium = kelasLaboratorium.toJSON()
+          for (const element of kelasLaboratorium) {
+            let hari = await Hari.query().where('kode', element.hari_kode).first()
+            let jam_kode = element.jam.split("-")
+            let mengajar_jam_ke = ""
+            let jam = await Jam.query().where('kode', jam_kode[0]).first()
+            mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+            jam = await Jam.query().where('kode', jam_kode[1]).first()
+            mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+            result += "Kelas "+element.nama+" hari "+ hari.nama +" Jam : " + mengajar_jam_ke + "\r\n"
+          }
         }
       }
 
       if (intent === 'cariPraktikumHari') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        let hari = await Hari.query().where('nama', entities.hari).first()
+        let kelasLaboratorium = await KelasLaboratorium.query().where('hari_kode', hari.kode).where(function(){
+          this.where('tahun_ajaran', year).orWhere('tahun_ajaran', year+1)
+        }).fetch()
+        if (kelasLaboratorium == null) {
+          result = 'Tidak ada jadwal praktikum pada hari ' + entities.hari
+        } else {
+          kelasLaboratorium = kelasLaboratorium.toJSON()
+          console.log(kelasLaboratorium)
+          for (const element of kelasLaboratorium) {
+            let jam_kode = element.jam.split("-")
+            let mengajar_jam_ke = ""
+            let jam = await Jam.query().where('kode', jam_kode[0]).first()
+            mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+            jam = await Jam.query().where('kode', jam_kode[1]).first()
+            mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+            result += "Kelas " + element.nama + " hari " + hari.nama + " Jam : " + mengajar_jam_ke + "\r\n"
+          }
+        }
       }
       if (intent === 'cariPraktikum') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        const now = Moment().format('dddd')
+        const hari = await Hari.query().where('nama', now.toUpperCase()).first()
+        let kelasLaboratorium = await KelasLaboratorium.query().where('hari_kode', hari.kode).where(function () {
+          this.where('tahun_ajaran', year).orWhere('tahun_ajaran', year + 1)
+        }).fetch()
+        if (kelasLaboratorium == null) {
+          result = 'Tidak ada jadwal praktikum pada hari ' + entities.hari
+        } else {
+          kelasLaboratorium = kelasLaboratorium.toJSON()
+          for (const element of kelasLaboratorium) {
+            let jam_kode = element.jam.split("-")
+            let mengajar_jam_ke = ""
+            let jam = await Jam.query().where('kode', jam_kode[0]).first()
+            mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+            jam = await Jam.query().where('kode', jam_kode[1]).first()
+            mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+            result += "Kelas " + element.nama + " hari " + hari.nama + " Jam : " + mengajar_jam_ke + "\r\n"
+          }
+        }
       }
       if (intent === 'cariNilaiPraktikum') {
-
+        if(typeof entities.nbi === 'undefined'){
+          result = "Data nbi belum dimasukkan, lengkapi pertanyaan dengan memasukkan nbi"
+        }else{
+          let kelasLaboratoriumMahasiswa = await KelasLaboratoriumMahasiswa.query().where('nbi', entities.nbi).fetch()
+          kelasLaboratoriumMahasiswa = kelasLaboratoriumMahasiswa.toJSON()
+          if(kelasLaboratoriumMahasiswa.length == 0){
+            result = entities.nbi + " masih belum mengikuti praktikum"
+          }else{
+            for (const element of kelasLaboratoriumMahasiswa) {
+              let kelasLaboratorium = await KelasLaboratorium.query().where('id',element.kelas_laboratorium_id).first()
+              let praktikumLaboratorium = await PraktikumLaboratorium.query().where('kode',kelasLaboratorium.praktikum_laboratorium_kode).first()
+              result += "Praktikum " + praktikumLaboratorium.nama + " Nilai " + element.grade + "\r\n"
+            }
+          }
+        }
       }
       if (intent === 'cariNilaiPraktikumNama') {
 
       }
       if (intent === 'cariJadwalPendaftaranSeminarTA') {
-
+        result = answer
       }
+
       if (intent === 'cariJadwalPendaftaranUjianTA') {
-
+        result = answer
       }
+
       if (intent === 'cariJadwalPendaftaranKerjaPraktek') {
-
+        result = answer
       }
+
       if (intent === 'cariSyaratTA') {
-
+        result = answer
       }
+
       if (intent === 'cariProsedurTA') {
-
+        result = answer
       }
+
       if (intent === 'cariSyaratKerjaPraktek') {
-
+        result = answer
       }
+
       if (intent === 'cariProsedurKerjaPraktek') {
-
+        result = answer
       }
-      if (intent === 'cariSyaratYudisium') {
 
+      if (intent === 'cariSyaratYudisium') {
+        result = answer
       }
 
       if (result == '') {
