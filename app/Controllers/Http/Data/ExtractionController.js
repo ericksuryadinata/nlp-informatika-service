@@ -325,6 +325,7 @@ class ExtractionController {
           }
         }
       }
+
       if (intent === 'cariJadwalKuliahHariNbi') {
         const now = Moment().format('dddd')
         const hari = await Hari.query().where('nama', entities.hari).first()
@@ -360,6 +361,7 @@ class ExtractionController {
           result = answer + " " + Moment(seminarTA.tanggal).format("dddd, D MMMM YYYY")
         }
       }
+
       if (intent === 'cariJadwalSeminarTANbi') {
         let year = Moment().format('YYYY')
         let month = Moment().format('M')
@@ -370,27 +372,87 @@ class ExtractionController {
         if (seminarTA == null) {
           result = 'Tidak ada jadwal seminar Tugas Akhir'
         } else {
-          console.log(seminarTA.tanggal)
           result = answer + " " + Moment(seminarTA.tanggal).format("dddd, D MMMM YYYY") + ", Ruang " + seminarTA.ruang + "\r\n" + " Dengan Ketua Penguji " + seminarTA.ketua_penguji +
           "\r\n anggota penguji : \r\n1. " + seminarTA.anggota_penguji_1 +
           "\r\n2. " + seminarTA.anggota_penguji_2
         }
       }
+
       if (intent === 'cariJadwalUjianTA') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        const ujianTA = await InformasiUjianTa.query().where('tahun', year).first()
+        if (ujianTA == null) {
+          result = 'Tidak ada jadwal seminar Tugas Akhir'
+        } else {
+          result = answer + " " + Moment(ujianTA.tanggal).format("dddd, D MMMM YYYY")
+        }
       }
+
       if (intent === 'cariJadwalUjianTANbi') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        const UjianTA = await InformasiUjianTa.query().where('tahun', year).where('nbi', entities.nbi).first()
+        if (UjianTA == null) {
+          result = 'Tidak ada jadwal seminar Tugas Akhir'
+        } else {
+          result = answer + " " + Moment(UjianTA.tanggal).format("dddd, D MMMM YYYY") + ", Ruang " + UjianTA.ruang + "\r\n" + " Dengan Ketua Penguji " + UjianTA.ketua_penguji +
+            "\r\n anggota penguji : \r\n1. " + UjianTA.anggota_penguji_1 +
+            "\r\n2. " + UjianTA.anggota_penguji_2
+        }
       }
+
       if (intent === 'cariJadwalSidangKerjaPraktek') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        const kerjaPraktek = await KerjaPraktek.query().where('tahun', year).first()
+        if (kerjaPraktek == null) {
+          result = 'Tidak ada jadwal sidang Kerja Praktek'
+        } else {
+          result = answer + " " + Moment(kerjaPraktek.tanggal).format("dddd, D MMMM YYYY")
+        }
       }
+
       if (intent === 'cariJadwalSidangKerjaPraktekNbi') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        const kerjaPraktek = await KerjaPraktek.query().where('tahun', year).where('nbi', entities.nbi).first()
+        if (kerjaPraktek == null) {
+          result = 'Tidak ada jadwal sidang Kerja Praktek'
+        } else {
+          result = answer + " " + Moment(kerjaPraktek.tanggal).format("dddd, D MMMM YYYY") + ", Ruang " + kerjaPraktek.ruang + "\r\n" + " Dengan Ketua Penguji " + kerjaPraktek.ketua_penguji +
+            "\r\n anggota penguji : \r\n1. " + kerjaPraktek.anggota_penguji_1 +
+            "\r\n2. " + kerjaPraktek.anggota_penguji_2
+        }
       }
+
       if (intent === 'cariPraktikumNama') {
-
+        let year = Moment().format('YYYY')
+        let month = Moment().format('M')
+        if (month < 8) {
+          year = year - 1
+        }
+        const praktikumLaboratorium = await PraktikumLaboratorium.query().whereRaw('nama like ?', entities.namaPraktikum).first()
+        let jadwalPraktikum = await KelasLaboratorium.query().where('praktikum_laboratorium_kode', praktikumLaboratorium.kode).where('tahun_ajaran',year).first()
+        if (jadwalPraktikum == null) {
+          result = 'Tidak ada jadwal praktikum ' + entities.namaPraktikum
+        } else {
+          result = ''
+        }
       }
+
       if (intent === 'cariPraktikumHari') {
 
       }
