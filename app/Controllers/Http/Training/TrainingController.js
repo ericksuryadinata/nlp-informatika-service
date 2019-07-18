@@ -494,6 +494,12 @@ class TrainingController {
         manager.addDocument('id', 'tolong %kataJadwal% kuliah %mataKuliah% sekarang', 'cariJadwalKuliahNama')
         manager.addDocument('id', 'carikan %kataJadwal% kuliah %mataKuliah% sekarang', 'cariJadwalKuliahNama')
 
+        manager.addDocument('id', '%kataJadwal% %mataKuliah% hari %hari%', 'cariJadwalKuliahNamaHari')
+        manager.addDocument('id', '%kataJadwal% kuliah %mataKuliah% hari %hari%', 'cariJadwalKuliahNamaHari')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah %mataKuliah% hari %hari%', 'cariJadwalKuliahNamaHari')
+        manager.addDocument('id', 'tolong %kataJadwal% kuliah %mataKuliah% hari %hari%', 'cariJadwalKuliahNamaHari')
+        manager.addDocument('id', 'carikan %kataJadwal% kuliah %mataKuliah% hari %hari%', 'cariJadwalKuliahNamaHari')
+
         manager.addDocument('id', '%kataJadwal% kuliah nbi %nbi% hari ini', 'cariJadwalKuliahNbi')
         manager.addDocument('id', 'carikan %kataJadwal% nbi %nbi% hari ini', 'cariJadwalKuliahNbi')
         manager.addDocument('id', 'tolong %kataJadwal% nbi %nbi% hari ini', 'cariJadwalKuliahNbi')
@@ -760,9 +766,12 @@ class TrainingController {
         manager.addAnswer('id', 'cariJadwalKuliah', 'Jadwal kuliah hari ini adalah')
         manager.addAnswer('id', 'cariJadwalKuliah', 'kuliah sekarang adalah')
         manager.addAnswer('id', 'cariJadwalKuliah', 'Hari ini jadwal kuliahnya adalah')
-        manager.addAnswer('id', 'cariJadwalKuliahNama', 'Jadwal kuliah {{mataKuliah}} adalah')
+
         manager.addAnswer('id', 'cariJadwalKuliahNama', 'Jadwal kuliah {{mataKuliah}} adalah')
         manager.addAnswer('id', 'cariJadwalKuliahNama', 'kuliah {{mataKuliah}} jadwalnya adalah')
+
+        manager.addAnswer('id', 'cariJadwalKuliahNamaHari', 'Jadwal kuliah {{mataKuliah}} hari {{hari}} adalah')
+        manager.addAnswer('id', 'cariJadwalKuliahNamaHari', 'kuliah {{mataKuliah}} hari {{hari}} jadwalnya adalah')
 
         manager.addAnswer('id', 'cariJadwalKuliahNamaNbi', 'Jadwal kuliah {{mataKuliah}} nbi {{nbi}} adalah')
         manager.addAnswer('id', 'cariJadwalKuliahNamaNbi', 'Jadwal kuliah {{mataKuliah}} nbi {{nbi}} adalah')

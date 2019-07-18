@@ -75,7 +75,12 @@ class ExtractionController {
         // let's build the entities for the next process
         if (process.entities.length !== 0) {
           process.entities.forEach(element => {
-            entities[element.entity] = element.option
+            if(typeof element.option === 'undefined'){
+              entities[element.entity] = element.sourceText
+            }else{
+              entities[element.entity] = element.option
+            }
+
           })
         } else {
           result = await this.Handler.entitiesHandler()
@@ -88,10 +93,10 @@ class ExtractionController {
             'result': result
           })
         }
-        // console.log(entities)
+        console.log(entities)
         // find the intent for next process
         const intent = process.intent
-
+        console.log(intent)
         result = await this.getResponse(intent, entities, process.srcAnswer, process.answer)
         return response.json({
           'status': 'success',
@@ -141,11 +146,15 @@ class ExtractionController {
 
 
     if (intent === 'cariJadwalDosenGeneral') {
+      if(typeof entities.subjekDosen === 'undefined'){
+        result = await this.Handler.entitiesHandler()
+        return;
+      }
       const now = Moment().format('dddd')
       const hari = await Hari.query().where('nama',now.toUpperCase()).first()
       const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
-      let jadwal = await Krss.query().where('nip', dosen.nip).where('hari_kode', 3).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
-      if(jadwal == null){
+      let jadwal = await Krss.query().where('nip', dosen.nip).where('hari_kode', hari.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
+      if(jadwal == null || jadwal.toJSON().length === 0){
         result = entities.subjekDosen + " tidak sedang mengajar"
       }else{
         jadwal = jadwal.toJSON()
@@ -164,7 +173,24 @@ class ExtractionController {
 
 
     if (intent === 'cariJadwalDosenGeneralHari') {
+      const hari = await Hari.query().where('nama', entities.hari.toUpperCase()).first()
       const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
+      let jadwal = await Krss.query().where('nip', dosen.nip).where('hari_kode', hari.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
+      if (jadwal == null || jadwal.toJSON().length === 0) {
+        result = entities.subjekDosen + " tidak mempunyai jadwal pada hari tersebut "
+      } else {
+        jadwal = jadwal.toJSON()
+        for (const element of jadwal) {
+          let jam_kode = element.jam.split("-")
+          let mataKuliah = await MataKuliah.query().where('kode', element.mata_kuliah_kode).first()
+          let mengajar_jam_ke = ""
+          let jam = await Jam.query().where('kode', jam_kode[0]).first()
+          mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+          jam = await Jam.query().where('kode', jam_kode[1]).first()
+          mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+          result += mataKuliah.nama + " Kelas " + element.kelas + " Ruang " + element.ruang + " Jam : " + mengajar_jam_ke + "\r\n"
+        }
+      }
     }
 
     if (intent === 'cariNomorDosenGeneral') {
@@ -175,20 +201,93 @@ class ExtractionController {
         result = entities.subjekDosen + " masih belum mempunyai kontak"
       }
     }
-    
+
     if (intent === 'cariJadwalKuliah') {
-      const now = Moment().format('Y-MM-DD HH:mm:ss')
-      const krs = await Krss.query().where()
+      const now = Moment().format('dddd')
+      const hari = await Hari.query().where('nama', now.toUpperCase()).first()
+      let jadwal = await Krss.query().where('hari_kode', hari.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
+      if (jadwal == null || jadwal.toJSON().length === 0) {
+        result = 'Tidak ada jadwal kuliah pada hari ini'
+      } else {
+        jadwal = jadwal.toJSON()
+        for (const element of jadwal) {
+          let jam_kode = element.jam.split("-")
+          let mataKuliah = await MataKuliah.query().where('kode', element.mata_kuliah_kode).first()
+          let mengajar_jam_ke = ""
+          let jam = await Jam.query().where('kode', jam_kode[0]).first()
+          mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+          jam = await Jam.query().where('kode', jam_kode[1]).first()
+          mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+          result += mataKuliah.nama + " Kelas " + element.kelas + " Ruang " + element.ruang + " Jam : " + mengajar_jam_ke + "\r\n"
+        }
+      }
     }
 
     if (intent === 'cariJadwalKuliahNama') {
-      const now = Moment().format('Y-MM-DD HH:mm:ss')
-      const krs = await Krss.query().where()
+      const mk = await MataKuliah.query().where('nama', entities.mataKuliah).first()
+      let jadwal = await Krss.query().where('mata_kuliah_kode', mk.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
+      if (jadwal == null || jadwal.toJSON().length === 0) {
+        result = 'Tidak ada jadwal pada mata kuliah tersebut'
+      } else {
+        jadwal = jadwal.toJSON()
+        for (const element of jadwal) {
+          let jam_kode = element.jam.split("-")
+          let mataKuliah = await MataKuliah.query().where('kode', element.mata_kuliah_kode).first()
+          let mengajar_jam_ke = ""
+          let jam = await Jam.query().where('kode', jam_kode[0]).first()
+          mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+          jam = await Jam.query().where('kode', jam_kode[1]).first()
+          mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+          result += mataKuliah.nama + " Kelas " + element.kelas + " Ruang " + element.ruang + " Jam : " + mengajar_jam_ke + "\r\n"
+        }
+      }
+    }
+
+    if (intent === 'cariJadwalKuliahNamaHari') {
+      const hari = await Hari.query().where('nama', entities.hari.toUpperCase()).first()
+      const mk = await MataKuliah.query().where('nama', entities.mataKuliah).first()
+      let jadwal = await Krss.query().where('hari_kode', hari.kode).where('mata_kuliah_kode', mk.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
+      if (jadwal == null || jadwal.toJSON().length === 0) {
+        result = 'Tidak ada jadwal pada mata kuliah '+entities.mataKuliah+' pada hari tersebut'
+      } else {
+        jadwal = jadwal.toJSON()
+        for (const element of jadwal) {
+          let jam_kode = element.jam.split("-")
+          let mataKuliah = await MataKuliah.query().where('kode', element.mata_kuliah_kode).first()
+          let mengajar_jam_ke = ""
+          let jam = await Jam.query().where('kode', jam_kode[0]).first()
+          mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+          jam = await Jam.query().where('kode', jam_kode[1]).first()
+          mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+          result += mataKuliah.nama + " Kelas " + element.kelas + " Ruang " + element.ruang + " Jam : " + mengajar_jam_ke + "\r\n"
+        }
+      }
     }
 
     if (intent === 'cariJadwalKuliahNamaNbi') {
-      const now = Moment().format('Y-MM-DD HH:mm:ss')
-      const krs = await Krss.query().where()
+      const now = Moment().format('dddd')
+      const hari = await Hari.query().where('nama', now.toUpperCase()).first()
+      const mk = await MataKuliah.query().where('nama', entities.mataKuliah).first()
+      console.log(entities)
+      console.log(hari.kode)
+      console.log(mk.kode)
+      console.log(entities.nbi)
+      let jadwal = await Krss.query().where('hari_kode', hari.kode).where('mata_kuliah_kode', mk.kode).where('nbi', entities.nbi).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
+      if (jadwal == null || jadwal.toJSON().length === 0) {
+        result = 'Tidak ada jadwal pada mata kuliah ' + entities.mataKuliah + ' pada hari ini'
+      } else {
+        jadwal = jadwal.toJSON()
+        for (const element of jadwal) {
+          let jam_kode = element.jam.split("-")
+          let mataKuliah = await MataKuliah.query().where('kode', element.mata_kuliah_kode).first()
+          let mengajar_jam_ke = ""
+          let jam = await Jam.query().where('kode', jam_kode[0]).first()
+          mengajar_jam_ke = jam.jam_kuliah_masuk + "-"
+          jam = await Jam.query().where('kode', jam_kode[1]).first()
+          mengajar_jam_ke = mengajar_jam_ke + jam.jam_kuliah_keluar
+          result += mataKuliah.nama + " Kelas " + element.kelas + " Ruang " + element.ruang + " Jam : " + mengajar_jam_ke + "\r\n"
+        }
+      }
     }
 
     if (intent === 'cariJadwalKuliahNbi') {
