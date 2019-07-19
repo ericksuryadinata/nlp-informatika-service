@@ -7,6 +7,9 @@ const Twilio = use('twilio')
 const Env = use('Env')
 const AccountSID = Env.get('TWILIO_ACCOUNT_SID')
 const AuthToken = Env.get('TWILIO_AUTH_TOKEN')
+const MessageServiceId = Env.get('TWILIO_MESSAGE_SERVICE_ID')
+const Cache = use('Cache')
+const random = use('randomstring')
 
 class DosenController {
   async random ({
@@ -101,7 +104,61 @@ class DosenController {
         'error': error.message
       })
     }
+  }
 
+  async getOTP({
+    params,
+    response
+  }){
+    try {
+      let telp = params.number
+      if (telp.charAt(0) === '0') {
+        telp = telp.replace('0', '+62')
+      }
+      const OTP = Math.floor(Math.random() * 900000) + 100000
+      const sessid = random.generate(10)
+      await Cache.put(sessid, OTP,500)
+      const client = new Twilio(AccountSID, AuthToken);
+      client.messages
+        .create({
+          body: 'Your OTP Key is ' + OTP,
+          messagingServiceSid: MessageServiceId,
+          to: telp
+        })
+        .then(message => console.log(message.sid));
+
+      return response.status(200).json({
+        'Status':'success',
+        'Details': sessid
+      })
+
+    } catch (error) {
+      return response.status(500).json({
+        'status': 'failed',
+        'error': error.message
+      })
+    }
+  }
+
+  async verifyOTP({
+    params,
+    response
+  }){
+    const OTP = params.OTP
+    const sessid = params.sess
+    const OTPCache = await Cache.get(sessid)
+
+    if(OTP == OTPCache){
+       return response.status(200).json({
+         'Status': 'success',
+         'Details': sessid
+       })
+    }
+
+    return response.status(200).json({
+      'Status': 'failed',
+      'Details': 'Salah KODE OTP'
+    })
   }
 }
 
