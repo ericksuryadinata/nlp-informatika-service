@@ -26,13 +26,13 @@ class DosenController {
   }) {
     const req = request.all()
     try {
-      let dosen = await Dosen.query().where('imei', req.imei).first()
+      let dosen = await Dosen.query().where('imei', req.imei).where('nip',req.nip).first()
       let lokasiDosen = new LokasiDosen()
       if (dosen) {
         lokasiDosen.nip = dosen.nip
-        lokasiDosen.latitude = req.latitude
-        lokasiDosen.longitude = req.longitude
-        lokasiDosen.geocode = req.geocode
+        lokasiDosen.latitude = req.lat
+        lokasiDosen.longitude = req.long
+        // lokasiDosen.geocode = req.geocode
         lokasiDosen.timestamp = Moment().format('Y-MM-DD HH:mm:ss')
         await lokasiDosen.save()
         return response.json({
