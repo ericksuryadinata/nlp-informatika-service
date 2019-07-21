@@ -64,6 +64,7 @@ class ExtractionController {
           result = await this.Handler.intentHandler()
           logMessage.messages = process.utterance
           logMessage.answer = result
+          logMessage.intent = 'No intent'
           await logMessage.save()
 
           return response.json({
@@ -86,6 +87,7 @@ class ExtractionController {
           result = await this.Handler.entitiesHandler()
           logMessage.messages = process.utterance
           logMessage.answer = result
+          logMessage.intent = process.intent
           await logMessage.save()
 
           return response.json({
@@ -97,7 +99,13 @@ class ExtractionController {
         // find the intent for next process
         const intent = process.intent
         console.log(intent)
-        result = await this.getResponse(intent, entities, process.srcAnswer, process.answer)
+        // get the results
+        result = await this.getResponse(intent, entities, process.utterance, process.srcAnswer, process.answer)
+        // save this for some reason
+        logMessage.messages = process.utterance
+        logMessage.answer = result
+        logMessage.intent = intent
+        await logMessage.save()
         return response.json({
           'status': 'success',
           'result': result,
@@ -121,10 +129,11 @@ class ExtractionController {
    *
    * @param {intent} intent
    * @param {entities} entities
+   * @param {utterance} utterance
    * @param {srcAnswer} srcAnswer
    * @param {answer} answer
    */
-  async getResponse(intent, entities, srcAnswer, answer) {
+  async getResponse(intent, entities, utterance, srcAnswer, answer) {
     // we know the intent
     // for god sake, this method is not a best practice
     // the best pratice is, looking on table, and create a dinamic query about the intent and entities
@@ -247,6 +256,9 @@ class ExtractionController {
         let jadwal = await Krss.query().where('hari_kode', hari.kode).where('mata_kuliah_kode', mk.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
         if (jadwal == null || jadwal.toJSON().length === 0) {
           result = 'Tidak ada jadwal pada mata kuliah ' + entities.mataKuliah + ' pada hari tersebut'
+          if(typeof entities.mataKuliah === 'undefined'){
+            result = 'Tidak ada jadwal pada mata kuliah pada hari tersebut'
+          }
         } else {
           jadwal = jadwal.toJSON()
           for (const element of jadwal) {
@@ -269,6 +281,9 @@ class ExtractionController {
         let jadwal = await Krss.query().where('hari_kode', hari.kode).where('mata_kuliah_kode', mk.kode).where('nbi', entities.nbi).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
         if (jadwal == null || jadwal.toJSON().length === 0) {
           result = 'Tidak ada jadwal pada mata kuliah ' + entities.mataKuliah + ' pada hari ini'
+          if (typeof entities.mataKuliah === 'undefined') {
+            result = 'Tidak ada jadwal pada mata kuliah pada hari ini'
+          }
         } else {
           jadwal = jadwal.toJSON()
           for (const element of jadwal) {
@@ -290,6 +305,9 @@ class ExtractionController {
         let jadwal = await Krss.query().where('hari_kode', hari.kode).where('nbi', entities.nbi).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
         if (jadwal == null || jadwal.toJSON().length === 0) {
           result = 'Tidak ada jadwal pada mata kuliah ' + entities.mataKuliah + ' pada hari ini'
+          if (typeof entities.mataKuliah === 'undefined') {
+            result = 'Tidak ada jadwal pada mata kuliah pada hari ini'
+          }
         } else {
           jadwal = jadwal.toJSON()
           for (const element of jadwal) {
@@ -311,6 +329,9 @@ class ExtractionController {
         let jadwal = await Krss.query().where('hari_kode', hari.kode).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
         if (jadwal == null || jadwal.toJSON().length === 0) {
           result = 'Tidak ada jadwal pada mata kuliah ' + entities.mataKuliah + ' pada hari ini'
+          if (typeof entities.mataKuliah === 'undefined') {
+            result = 'Tidak ada jadwal pada mata kuliah pada hari ini'
+          }
         } else {
           jadwal = jadwal.toJSON()
           for (const element of jadwal) {
@@ -332,6 +353,9 @@ class ExtractionController {
         let jadwal = await Krss.query().where('hari_kode', hari.kode).where('nbi', entities.nbi).groupBy('mata_kuliah_kode').groupBy('kelas').fetch()
         if (jadwal == null || jadwal.toJSON().length === 0) {
           result = 'Tidak ada jadwal pada mata kuliah ' + entities.mataKuliah + ' pada hari ini'
+          if (typeof entities.mataKuliah === 'undefined') {
+            result = 'Tidak ada jadwal pada mata kuliah pada hari ini'
+          }
         } else {
           jadwal = jadwal.toJSON()
           for (const element of jadwal) {
@@ -534,9 +558,26 @@ class ExtractionController {
           }
         }
       }
-      if (intent === 'cariNilaiPraktikumNama') {
 
+      if (intent === 'cariNilaiPraktikumNama') {
+        if(typeof entities.nbi === 'undefined'){
+          result = "Data nbi belum dimasukkan, lengkapi pertanyaan dengan memasukkan nbi"
+        }else{
+          // select * from kelas_laboratorium_mahasiswa join
+          // kelas_laboratorium on
+          // kelas_laboratorium.id = kelas_laboratorium_mahasiswa.kelas_laboratorium_id
+          // where kelas_laboratorium.praktikum_laboratorium_kode = and nbi =
+          const praktikumLaboratorium = await PraktikumLaboratorium.query().whereRaw('nama like ?', entities.namaPraktikum).first()
+          console.log(praktikumLaboratorium.kode)
+          const kelasLaboratorium = await KelasLaboratorium.query().where('praktikum_laboratorium_kode', praktikumLaboratorium.kode).first()
+          console.log(kelasLaboratorium.id)
+          const kelasLaboratoriumMahasiswa = await KelasLaboratoriumMahasiswa.query()
+          .where('kelas_laboratorium_id', kelasLaboratorium.id)
+          .where('nbi', entities.nbi).first()
+          result = answer + ' ' + kelasLaboratoriumMahasiswa.grade
+        }
       }
+
       if (intent === 'cariJadwalPendaftaranSeminarTA') {
         result = answer
       }
@@ -568,14 +609,20 @@ class ExtractionController {
       if (intent === 'cariSyaratYudisium') {
         result = answer
       }
-
+      console.log(result)
       if (result == '') {
         result = 'Menu masih belum diaktifkan'
       }
 
       return result;
-    } catch (error) {
-      return await this.Handler.entitiesHandler() + error
+    } catch (error){
+      // save this for some reason
+      const logMessage = new LogMessage()
+      logMessage.messages = utterance
+      logMessage.answer = error
+      logMessage.intent = intent
+      await logMessage.save()
+      return await this.Handler.entitiesHandler()
     }
 
   }
