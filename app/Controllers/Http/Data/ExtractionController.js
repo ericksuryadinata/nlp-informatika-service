@@ -65,7 +65,7 @@ class ExtractionController {
           logMessage.messages = process.utterance
           logMessage.answer = result
           logMessage.intent = 'No intent'
-          logMessage.step = 'check intent'
+          logMessage.step = 'No intent'
           await logMessage.save()
 
           return response.json({
@@ -73,6 +73,21 @@ class ExtractionController {
             'result': result
           })
         }
+
+        if(process.intent === 'None' && process.entities.length === 0){
+          result = await this.Handler.entitiesHandler()
+          logMessage.messages = process.utterance
+          logMessage.answer = result
+          logMessage.intent = process.intent
+          logMessage.step = 'check entities'
+          await logMessage.save()
+
+          return response.json({
+            'status': 'success',
+            'result': result
+          })
+        }
+
 
         // let's build the entities for the next process
         if (process.entities.length !== 0) {
@@ -85,19 +100,7 @@ class ExtractionController {
 
           })
         }
-        // else {
-        //   result = await this.Handler.entitiesHandler()
-        //   logMessage.messages = process.utterance
-        //   logMessage.answer = result
-        //   logMessage.intent = process.intent
-        //   logMessage.step = 'check entities'
-        //   await logMessage.save()
 
-        //   return response.json({
-        //     'status': 'success',
-        //     'result': result
-        //   })
-        // }
         console.log(entities)
         // find the intent for next process
         const intent = process.intent
@@ -616,7 +619,6 @@ class ExtractionController {
         const prosedur = await Prosedur.query().where('key',intent).first()
         result = answer + ' ' + prosedur.value
       }
-      console.log(result)
       if (result == '') {
         result = this.Handler.entitiesHandler()
       }
