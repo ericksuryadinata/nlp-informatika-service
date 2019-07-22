@@ -628,11 +628,11 @@ class ExtractionController {
       // save this for some reason
       const logMessage = new LogMessage()
       logMessage.messages = utterance
-      logMessage.answer = JSON.stringify(error)
+      logMessage.answer = this.Handler.entitiesHandler() + JSON.stringify(error)
       logMessage.intent = intent
       logMessage.step = 'error building result'
       await logMessage.save()
-      return await this.Handler.entitiesHandler() + error
+      return await this.Handler.entitiesHandler()
     }
 
   }
