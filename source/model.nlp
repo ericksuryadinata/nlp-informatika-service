@@ -22875,7 +22875,7 @@
           "response": "Pendaftaran Seminar {{tugasAkhir}} dijadwalkan pada"
         }
       ],
-      "cariJadwalPendaftaranTA": [
+      "cariJadwalPendaftaranUjianTA": [
         {
           "response": "Pendaftaran Ujian {{tugasAkhir}} pada"
         },

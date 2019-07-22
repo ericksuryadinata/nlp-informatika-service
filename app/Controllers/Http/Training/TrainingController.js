@@ -655,6 +655,8 @@ class TrainingController {
         manager.addDocument('id', 'carikan nilai praktikum %namaPraktikum% nbi %nbi%', 'cariNilaiPraktikumNama')
         manager.addDocument('id', 'carikan nilai praktikum %namaPraktikum% %nbi%', 'cariNilaiPraktikumNama')
 
+
+
         // informasi lainnya
         manager.addDocument('id', 'informasi pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranSeminarTA')
         manager.addDocument('id', 'pendaftaran seminar %tugasAkhir%', 'cariJadwalPendaftaranSeminarTA')
@@ -850,10 +852,11 @@ class TrainingController {
         manager.addAnswer('id', 'cariJadwalPendaftaranSeminarTA', 'Pendaftaran Seminar {{tugasAkhir}} akan dilaksanakan pada')
         manager.addAnswer('id', 'cariJadwalPendaftaranSeminarTA', 'Pendaftaran Seminar {{tugasAkhir}} dijadwalkan pada')
 
-        manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Ujian {{tugasAkhir}} pada')
-        manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Ujian {{tugasAkhir}} dilaksanakan pada')
-        manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Ujian {{tugasAkhir}} akan dilaksanakan pada')
-        manager.addAnswer('id', 'cariJadwalPendaftaranTA', 'Pendaftaran Ujian {{tugasAkhir}} dijadwalkan pada')
+
+        manager.addAnswer('id', 'cariJadwalPendaftaranUjianTA', 'Pendaftaran Ujian {{tugasAkhir}} pada')
+        manager.addAnswer('id', 'cariJadwalPendaftaranUjianTA', 'Pendaftaran Ujian {{tugasAkhir}} dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalPendaftaranUjianTA', 'Pendaftaran Ujian {{tugasAkhir}} akan dilaksanakan pada')
+        manager.addAnswer('id', 'cariJadwalPendaftaranUjianTA', 'Pendaftaran Ujian {{tugasAkhir}} dijadwalkan pada')
 
         manager.addAnswer('id', 'cariJadwalPendaftaranKerjaPraktek', 'Pendaftaran Sidang {{kerjaPraktek}} pada')
         manager.addAnswer('id', 'cariJadwalPendaftaranKerjaPraktek', 'Pendaftaran Sidang {{kerjaPraktek}} dilaksanakan pada')

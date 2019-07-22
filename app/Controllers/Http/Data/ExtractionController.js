@@ -65,6 +65,7 @@ class ExtractionController {
           logMessage.messages = process.utterance
           logMessage.answer = result
           logMessage.intent = 'No intent'
+          logMessage.step = 'check intent'
           await logMessage.save()
 
           return response.json({
@@ -83,18 +84,20 @@ class ExtractionController {
             }
 
           })
-        } else {
-          result = await this.Handler.entitiesHandler()
-          logMessage.messages = process.utterance
-          logMessage.answer = result
-          logMessage.intent = process.intent
-          await logMessage.save()
-
-          return response.json({
-            'status': 'success',
-            'result': result
-          })
         }
+        // else {
+        //   result = await this.Handler.entitiesHandler()
+        //   logMessage.messages = process.utterance
+        //   logMessage.answer = result
+        //   logMessage.intent = process.intent
+        //   logMessage.step = 'check entities'
+        //   await logMessage.save()
+
+        //   return response.json({
+        //     'status': 'success',
+        //     'result': result
+        //   })
+        // }
         console.log(entities)
         // find the intent for next process
         const intent = process.intent
@@ -105,6 +108,7 @@ class ExtractionController {
         logMessage.messages = process.utterance
         logMessage.answer = result
         logMessage.intent = intent
+        logMessage.step = 'finished'
         await logMessage.save()
         return response.json({
           'status': 'success',
@@ -563,10 +567,6 @@ class ExtractionController {
         if(typeof entities.nbi === 'undefined'){
           result = "Data nbi belum dimasukkan, lengkapi pertanyaan dengan memasukkan nbi"
         }else{
-          // select * from kelas_laboratorium_mahasiswa join
-          // kelas_laboratorium on
-          // kelas_laboratorium.id = kelas_laboratorium_mahasiswa.kelas_laboratorium_id
-          // where kelas_laboratorium.praktikum_laboratorium_kode = and nbi =
           const praktikumLaboratorium = await PraktikumLaboratorium.query().whereRaw('nama like ?', entities.namaPraktikum).first()
           console.log(praktikumLaboratorium.kode)
           const kelasLaboratorium = await KelasLaboratorium.query().where('praktikum_laboratorium_kode', praktikumLaboratorium.kode).first()
@@ -579,39 +579,46 @@ class ExtractionController {
       }
 
       if (intent === 'cariJadwalPendaftaranSeminarTA') {
-        result = answer
+        const prosedur = await Prosedur.query().where('key',intent).first()
+        if(prosedur == null || typeof prosedur === 'undefined'){
+          result = 'Tidak ditemukan prosedur'
+        }else{
+          result = answer + ' ' + prosedur.value
+        }
       }
 
       if (intent === 'cariJadwalPendaftaranUjianTA') {
-        result = answer
+        const prosedur = await Prosedur.query().where('key', intent).first()
+        result = answer + ' ' + prosedur.value
       }
 
       if (intent === 'cariJadwalPendaftaranKerjaPraktek') {
-        result = answer
-      }
-
-      if (intent === 'cariSyaratTA') {
-        result = answer
+        const prosedur = await Prosedur.query().where('key', intent).first()
+        result = answer + ' ' + prosedur.value
       }
 
       if (intent === 'cariProsedurTA') {
-        result = answer
+        const prosedur = await Prosedur.query().where('key', intent).first()
+        result = answer + ' ' + prosedur.value
       }
 
-      if (intent === 'cariSyaratKerjaPraktek') {
-        result = answer
+      if (intent === 'cariProsedurSeminarTA') {
+        const prosedur = await Prosedur.query().where('key', intent).first()
+        result = answer + ' ' + prosedur.value
       }
 
       if (intent === 'cariProsedurKerjaPraktek') {
-        result = answer
+        const prosedur = await Prosedur.query().where('key', intent).first()
+        result = answer + ' ' + prosedur.value
       }
 
-      if (intent === 'cariSyaratYudisium') {
-        result = answer
+      if (intent === 'cariProsedurYudisium') {
+        const prosedur = await Prosedur.query().where('key',intent).first()
+        result = answer + ' ' + prosedur.value
       }
       console.log(result)
       if (result == '') {
-        result = 'Menu masih belum diaktifkan'
+        result = this.Handler.entitiesHandler()
       }
 
       return result;
@@ -619,10 +626,11 @@ class ExtractionController {
       // save this for some reason
       const logMessage = new LogMessage()
       logMessage.messages = utterance
-      logMessage.answer = error
+      logMessage.answer = JSON.stringify(error)
       logMessage.intent = intent
+      logMessage.step = 'error building result'
       await logMessage.save()
-      return await this.Handler.entitiesHandler()
+      return await this.Handler.entitiesHandler() + error
     }
 
   }
