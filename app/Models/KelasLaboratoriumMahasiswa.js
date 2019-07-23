@@ -14,10 +14,6 @@ class KelasLaboratoriumMahasiswa extends Model {
   static get updatedAtColumn () {
     return null
   }
-
-  kelasLaboratorium(){
-    
-  }
 }
 
 module.exports = KelasLaboratoriumMahasiswa

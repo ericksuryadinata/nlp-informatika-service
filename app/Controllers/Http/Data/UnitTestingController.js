@@ -23,9 +23,8 @@ const KelasLaboratoriumMahasiswa = use('App/Models/KelasLaboratoriumMahasiswa')
 const Prosedur = use('App/Models/Prosedur')
 const LogMessage = use('App/Models/LogMessage')
 const Moment = use('moment')
-const Database = use('Database')
 
-class ExtractionController {
+class UnitTestingController {
   constructor () {
     Moment.locale('id')
     this.Handler = new DefaultHandler()
@@ -53,6 +52,7 @@ class ExtractionController {
         const manager = new NlpManager()
         manager.load('source/model.nlp')
         let kata = req.sentence
+        let targetIntent = req.target
         let result = ''
         let entities = {}
         let logMessage = new LogMessage()
@@ -67,6 +67,7 @@ class ExtractionController {
           logMessage.answer = result
           logMessage.intent = 'noIntent'
           logMessage.step = 'No intent'
+          logMessage.target_intent = targetIntent
           await logMessage.save()
 
           return response.json({
@@ -81,6 +82,7 @@ class ExtractionController {
           logMessage.answer = result
           logMessage.intent = process.intent
           logMessage.step = 'check entities'
+          logMessage.target_intent = targetIntent
           await logMessage.save()
 
           return response.json({
@@ -105,11 +107,19 @@ class ExtractionController {
         const intent = process.intent
         console.log(intent)
         // get the results
-        result = await this.getResponse(intent, entities, process.utterance, process.srcAnswer, process.answer)
+        result = await this.getResponse(
+          intent,
+          targetIntent,
+          entities,
+          process.utterance,
+          process.srcAnswer,
+          process.answer
+        )
         // save this for some reason
         logMessage.messages = process.utterance
         logMessage.answer = result
         logMessage.intent = intent
+        logMessage.target_intent = targetIntent
         logMessage.step = 'finished'
         await logMessage.save()
         return response.json({
@@ -139,7 +149,7 @@ class ExtractionController {
    * @param {srcAnswer} srcAnswer
    * @param {answer} answer
    */
-  async getResponse (intent, entities, utterance, srcAnswer, answer) {
+  async getResponse (intent, targetIntent, entities, utterance, srcAnswer, answer) {
     // we know the intent
     // for god sake, this method is not a best practice
     // the best pratice is, looking on table, and create a dinamic query about the intent and entities
@@ -401,8 +411,8 @@ class ExtractionController {
           result = 'Tidak ada jadwal seminar Tugas Akhir'
         } else {
           result = answer + ' ' + Moment(seminarTA.tanggal).format('dddd, D MMMM YYYY') + ', Ruang ' + seminarTA.ruang + '\r\n' + ' Dengan Ketua Penguji ' + seminarTA.ketua_penguji +
-          '\r\n anggota penguji : \r\n1. ' + seminarTA.anggota_penguji_1 +
-          '\r\n2. ' + seminarTA.anggota_penguji_2
+            '\r\n anggota penguji : \r\n1. ' + seminarTA.anggota_penguji_1 +
+            '\r\n2. ' + seminarTA.anggota_penguji_2
         }
       }
 
@@ -643,10 +653,11 @@ class ExtractionController {
       logMessage.answer = this.Handler.entitiesHandler() + JSON.stringify(error)
       logMessage.intent = intent
       logMessage.step = 'error building result'
+      logMessage.target_intent = targetIntent
       await logMessage.save()
       return await this.Handler.entitiesHandler()
     }
   }
 }
 
-module.exports = ExtractionController
+module.exports = UnitTestingController
