@@ -155,13 +155,16 @@ class DosenController {
 
   async verifyOTP ({
     params,
-    response
+    response,
   }) {
     const OTP = params.OTP
     const sessid = params.sess
     const OTPCache = await Cache.get(sessid)
     console.log(OTPCache)
     if (OTP == OTPCache) {
+      const dosen = await Dosen.query().where('nip', params.nip).first()
+      dosen.imei = params.imei
+      await dosen.save()
       return response.status(200).json({
         'Status': 'success',
         'Details': sessid
