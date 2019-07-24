@@ -163,8 +163,7 @@ class DosenController {
     console.log(OTPCache)
     if (OTP == OTPCache) {
       const dosen = await Dosen.query().where('nip', params.nip).first()
-      dosen.imei = params.imei
-      await dosen.save()
+      const update = await Dosen.query().where('nip', dosen.nip).update({imei:params.imei})
       return response.status(200).json({
         'Status': 'success',
         'Details': sessid
