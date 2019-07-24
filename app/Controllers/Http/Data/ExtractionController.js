@@ -24,6 +24,9 @@ const Prosedur = use('App/Models/Prosedur')
 const LogMessage = use('App/Models/LogMessage')
 const Moment = use('moment')
 const Database = use('Database')
+const NodeGeocoder = use('node-geocoder');
+
+
 
 class ExtractionController {
   constructor () {
@@ -148,6 +151,16 @@ class ExtractionController {
 
       let lokasi
 
+      let options = {
+        provider: 'google',
+
+        // Optional depending on the providers
+        httpAdapter: 'https', // Default
+        apiKey: 'AIzaSyAYR0EplAYlkAFa7BrpBJCKPuCskZ2Qchs', // for Mapquest, OpenCage, Google Premier
+        formatter: null // 'gpx', 'string', ...
+      };
+
+      let geocoder = NodeGeocoder(options);
       if (intent === 'cariLokasiDosenGeneral') {
         const dosen = await Dosen.query().whereRaw('nama like ?', entities.subjekDosen).first()
         const lokasiDosen = await LokasiDosen.query().where('nip', dosen.nip).orderBy('timestamp', 'desc').first()
@@ -156,7 +169,11 @@ class ExtractionController {
         } else {
           lokasi = lokasiDosen.location_rfid
           if (lokasi == null) {
-            lokasi = lokasiDosen.latitude + ' ' + lokasiDosen.longitude + ', ' + lokasiDosen.geocode
+            let geocode
+            geocode = await geocoder.reverse({ lat: lokasiDosen.latitude, lon: lokasiDosen.longitude }, function (err, res) {
+              return res[0].formattedAddress
+            })
+            lokasi = geocode[0].formattedAddress
           }
           result = answer + ' ' + lokasi
         }

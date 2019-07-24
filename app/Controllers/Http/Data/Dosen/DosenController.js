@@ -160,8 +160,8 @@ class DosenController {
     const OTP = params.OTP
     const sessid = params.sess
     const OTPCache = await Cache.get(sessid)
-
-    if (OTP === OTPCache) {
+    console.log(OTPCache)
+    if (OTP == OTPCache) {
       return response.status(200).json({
         'Status': 'success',
         'Details': sessid

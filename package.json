@@ -28,6 +28,7 @@
     "adonis-cache": "^0.3.4",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
+    "node-geocoder": "^3.23.0",
     "node-nlp": "^3.3.2",
     "randomstring": "^1.1.5",
     "twilio": "^3.33.1"
